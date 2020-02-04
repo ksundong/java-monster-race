@@ -20,6 +20,7 @@ public class Race {
         Race race = new Race();
         race.readyGame();
         race.startGame();
+        race.endGame();
         race.terminateGame(0); // Normal Shutdown
     }
 
@@ -77,6 +78,17 @@ public class Race {
     private void moveMonster(Random random, Monster monster) {
         if (random.nextInt(10) > 3) {
             monster.plusMoveCount();
+        }
+    }
+
+    private void endGame() {
+        printMonstersMovingDistance();
+    }
+
+    private void printMonstersMovingDistance() {
+        System.out.println("<실행 결과>");
+        for (Monster monster : monsters) {
+            monster.showMovingDistance();
         }
     }
 
