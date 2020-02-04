@@ -1,6 +1,9 @@
 package dev.idion;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Race {
@@ -54,6 +57,27 @@ public class Race {
     }
 
     private void startGame() {
+        try {
+            randomAttempt();
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println("게임 실행 도중 오류가 발생했습니다.");
+            terminateGame(126); // Unix "Command invoked cannot execute"
+        }
+    }
+
+    private void randomAttempt() throws NoSuchAlgorithmException {
+        Random random = SecureRandom.getInstanceStrong();
+        for (Monster monster : monsters) {
+            for (int i = 0; i < attemptCount; i++) {
+                moveMonster(random, monster);
+            }
+        }
+    }
+
+    private void moveMonster(Random random, Monster monster) {
+        if (random.nextInt(10) > 3) {
+            monster.plusMoveCount();
+        }
     }
 
     private void terminateGame(int exitStatus) {

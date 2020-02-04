@@ -29,3 +29,4 @@
 6. Monster 클래스에 이동 거리를 저장할 int형 변수 moveCount를 private 접근제어자로 생성하였습니다.
 7. Monster들을 저장할 배열인 monsters를 Race 클래스에 선언하였습니다. 그리고, 이를 입력받은 수 만큼 배열을 생성하고, 이를 채우도록 하였습니다.
 8. Race를 시작할 startGame 메소드를 생성하였습니다.
+9. 게임을 시작하면, 입력한 시도횟수 만큼 random값을 만들어서 Monster의 이동 거리를 추가할 것인지 결정하는 randomAttempt 메소드를 생성하고, moveCount가 private 선언이 되어있기 때문에 이를 컨트롤 할 수 있게 하는  plusMoveCount 메소드를 생성하였습니다.
