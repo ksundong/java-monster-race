@@ -1,11 +1,13 @@
 package dev.idion;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Race {
     private static final String PROMPT = "> ";
     Scanner scanner;
     int attemptCount;
+    Monster[] monsters;
 
     public Race() {
         this.scanner = new Scanner(System.in);
@@ -34,6 +36,8 @@ public class Race {
             System.out.println("몬스터의 수를 정확히 입력해주세요.");
             terminateGame(1); // Unix "Catchall for general errors"
         }
+        monsters = new Monster[count];
+        Arrays.fill(monsters, new Monster());
     }
 
     private void inputAttemptCount() {
