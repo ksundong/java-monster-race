@@ -25,29 +25,28 @@ public class Race {
 
     private void readyGame() {
         System.out.println("<몬스터 경주>");
-        inputMonsterCount();
-        inputAttemptCount();
-    }
-
-    private void inputMonsterCount() {
-        System.out.println("몬스터는 모두 몇 마리인가요?");
-        System.out.print(PROMPT);
-        String input = scanner.nextLine();
-        int count = 0;
-        try {
-            count = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            System.out.println("몬스터의 수를 정확히 입력해주세요.");
-            terminateGame(1); // Unix "Catchall for general errors"
-        }
-        monsters = new Monster[count];
+        monsters = new Monster[inputMonsterCount()];
         fillMonsterIntoMonsters();
+        inputAttemptCount();
     }
 
     private void fillMonsterIntoMonsters() {
         for (int i = 0; i < monsters.length; i++) {
             monsters[i] = new Monster();
         }
+    }
+
+    private int inputMonsterCount() {
+        System.out.println("몬스터는 모두 몇 마리인가요?");
+        System.out.print(PROMPT);
+        int count = 0;
+        try {
+            count = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("몬스터의 수를 정확히 입력해주세요.");
+            terminateGame(1); // Unix "Catchall for general errors"
+        }
+        return count;
     }
 
     private void inputAttemptCount() {
