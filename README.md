@@ -15,10 +15,11 @@
 ## 온라인 코드 리뷰 과정
 
 - [텍스트와 이미지로 살펴보는 코드스쿼드의 온라인 코드 리뷰 과정](https://github.com/code-squad/codesquad-docs/blob/master/codereview/README.md)
-- [동영상으로 살펴보는 코드스쿼드의 온라인 코드 리뷰 과정](https://youtu.be/a5c9ku-_fok)- [동영상으로 살펴보는 코드스쿼드의 온라인 코드 리뷰 과정](https://youtu.be/a5c9ku-_fok)
+- [동영상으로 살펴보는 코드스쿼드의 온라인 코드 리뷰 과정](https://youtu.be/a5c9ku-_fok)
 
 ---
 
 # STEP1
 
 - 몬스터의 확장성을 위해 Monster라는 클래스를 생성
+- 몬스터 레이스를 수행할 Race라는 클래스를 생성 
