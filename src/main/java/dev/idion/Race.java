@@ -2,7 +2,6 @@ package dev.idion;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -42,7 +41,13 @@ public class Race {
             terminateGame(1); // Unix "Catchall for general errors"
         }
         monsters = new Monster[count];
-        Arrays.fill(monsters, new Monster());
+        fillMonsterIntoMonsters();
+    }
+
+    private void fillMonsterIntoMonsters() {
+        for (int i = 0; i < monsters.length; i++) {
+            monsters[i] = new Monster();
+        }
     }
 
     private void inputAttemptCount() {

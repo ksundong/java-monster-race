@@ -31,3 +31,4 @@
 8. Race를 시작할 startGame 메소드를 생성하였습니다.
 9. 게임을 시작하면, 입력한 시도횟수 만큼 random값을 만들어서 Monster의 이동 거리를 추가할 것인지 결정하는 randomAttempt 메소드를 생성하고, moveCount가 private 선언이 되어있기 때문에 이를 컨트롤 할 수 있게 하는  plusMoveCount 메소드를 생성하였습니다.
 10. 게임을 종료하면 결과를 출력하는 endGame 메소드를 추가하고, monsters 배열에 있는 Monster들의 각각의 이동거리를 출력하는 printMonstersMovingDistance 메소드를 추가하였습니다. Monster별로 이동거리를 출력해주기 위해 showMovingDistance라는 메소드를 Monster 클래스에 추가해주었습니다.
+11. Arrays.fill은 한 객체로만 채워주어서 제가 원하는 결과가 나오지 않아 fillMonsterIntoMonsters라는 메소드를 직접 만들어주었습니다.
