@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Race {
     private static final String PROMPT = "> ";
     Scanner scanner;
+    int attemptCount;
 
     public Race() {
         this.scanner = new Scanner(System.in);
@@ -19,6 +20,7 @@ public class Race {
     private void readyGame() {
         System.out.println("<몬스터 경주>");
         inputMonsterCount();
+        inputAttemptCount();
     }
 
     private void inputMonsterCount() {
@@ -33,6 +35,19 @@ public class Race {
             terminateGame(1); // Unix "Catchall for general errors"
         }
     }
+
+    private void inputAttemptCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.print(PROMPT);
+        String input = scanner.nextLine();
+        try {
+            attemptCount = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            System.out.println("시도할 횟수를 정확히 입력해주세요.");
+            terminateGame(1); // Unix "Catchall for general errors"
+        }
+    }
+
     private void terminateGame(int exitStatus) {
         System.out.println("게임을 종료합니다.");
         scanner.close();
