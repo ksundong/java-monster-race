@@ -74,9 +74,13 @@ public class Race {
     private void randomAttempt() throws NoSuchAlgorithmException {
         Random random = SecureRandom.getInstanceStrong();
         for (Monster monster : monsters) {
-            for (int i = 0; i < attemptCount; i++) {
-                moveMonster(random, monster);
-            }
+            attemptMoveMonster(random, monster);
+        }
+    }
+
+    private void attemptMoveMonster(Random random, Monster monster) {
+        for (int i = 0; i < attemptCount; i++) {
+            moveMonster(random, monster);
         }
     }
 
