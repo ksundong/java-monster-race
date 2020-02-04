@@ -16,6 +16,7 @@ public class Race {
     public static void main(String[] args) {
         Race race = new Race();
         race.readyGame();
+        race.startGame();
         race.terminateGame(0); // Normal Shutdown
     }
 
@@ -50,6 +51,9 @@ public class Race {
             System.out.println("시도할 횟수를 정확히 입력해주세요.");
             terminateGame(1); // Unix "Catchall for general errors"
         }
+    }
+
+    private void startGame() {
     }
 
     private void terminateGame(int exitStatus) {

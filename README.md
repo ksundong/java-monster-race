@@ -28,3 +28,4 @@
 5. Game을 준비하는 과정 구현(2): 시도할 횟수를 입력받는 메소드를 만들었습니다. inputMonsterCount와 마찬가지로 예외처리를 해주었습니다.
 6. Monster 클래스에 이동 거리를 저장할 int형 변수 moveCount를 private 접근제어자로 생성하였습니다.
 7. Monster들을 저장할 배열인 monsters를 Race 클래스에 선언하였습니다. 그리고, 이를 입력받은 수 만큼 배열을 생성하고, 이를 채우도록 하였습니다.
+8. Race를 시작할 startGame 메소드를 생성하였습니다.
