@@ -39,12 +39,9 @@ public class Race {
     private int inputMonsterCount() {
         System.out.println("몬스터는 모두 몇 마리인가요?");
         System.out.print(PROMPT);
-        int count = 0;
-        try {
-            count = Integer.parseInt(scanner.nextLine());
-        } catch (NumberFormatException e) {
-            System.out.println("몬스터의 수를 정확히 입력해주세요.");
-            terminateGame(1); // Unix "Catchall for general errors"
+        Integer count = null;
+        while (count == null) {
+            count = inputIntTypeValue("몬스터의 수");
         }
         return count;
     }
@@ -52,13 +49,20 @@ public class Race {
     private void inputAttemptCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         System.out.print(PROMPT);
-        String input = scanner.nextLine();
-        try {
-            attemptCount = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            System.out.println("시도할 횟수를 정확히 입력해주세요.");
-            terminateGame(1); // Unix "Catchall for general errors"
+        Integer count = null;
+        while (count == null) {
+            count = inputIntTypeValue("시도할 횟수");
         }
+        attemptCount = count;
+    }
+
+    private Integer inputIntTypeValue(String targetErrorMessage) {
+        try {
+            return Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.printf("%s를 정확히 입력해주세요.%n%s", targetErrorMessage, PROMPT);
+        }
+        return null;
     }
 
     private void startGame() {
