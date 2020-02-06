@@ -58,11 +58,19 @@ public class Race {
 
     private Integer inputIntTypeValue(String targetErrorMessage) {
         try {
-            return Integer.parseInt(scanner.nextLine());
+            int inputValue = Integer.parseInt(scanner.nextLine());
+            validateInputValue(inputValue);
+            return inputValue;
         } catch (NumberFormatException e) {
             System.out.printf("%s를 정확히 입력해주세요.%n%s", targetErrorMessage, PROMPT);
         }
         return null;
+    }
+
+    private void validateInputValue(int count) {
+        if (count < 1) {
+            throw new NumberFormatException("숫자는 양수여야 합니다.");
+        }
     }
 
     private void startGame() {
