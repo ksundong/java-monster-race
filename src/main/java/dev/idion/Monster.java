@@ -5,7 +5,12 @@ public class Monster {
     private String monsterName;
     private MonsterType monsterType;
 
-    public void plusMoveCount() {
+    public Monster(String monsterName, MonsterType monsterType) {
+        this.monsterName = monsterName;
+        this.monsterType = monsterType;
+    }
+
+    public void moveMonster() {
         this.moveCount++;
     }
 

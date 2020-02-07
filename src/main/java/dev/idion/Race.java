@@ -32,8 +32,23 @@ public class Race {
 
     private void initializeMonsters() {
         monsters = new Monster[inputValue(MONSTER_COUNT_STRING)];
+        System.out.println(INPUT_MONSTER_NAME_AND_TYPE);
         for (int i = 0; i < monsters.length; i++) {
-            monsters[i] = new Monster();
+            makeMonster(i);
+        }
+    }
+
+    private void makeMonster(int index) {
+        while (true) {
+            try {
+                String[] inputs = scanner.nextLine().split(",");
+                String monsterName = inputs[0].trim();
+                MonsterType monsterType = MonsterType.valueOf(inputs[1].trim());
+                monsters[index] = new Monster(monsterName, monsterType);
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(TYPE_NOT_EXIST);
+            }
         }
     }
 
@@ -73,13 +88,7 @@ public class Race {
 
     private void attemptMoveMonster(Random random, Monster monster) {
         for (int i = 0; i < attemptCount; i++) {
-            moveMonster(random, monster);
-        }
-    }
-
-    private void moveMonster(Random random, Monster monster) {
-        if (random.nextInt(10) > 3) {
-            monster.plusMoveCount();
+            monster.moveMonster();
         }
     }
 
