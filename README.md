@@ -32,3 +32,15 @@
 9. 게임을 시작하면, 입력한 시도횟수 만큼 random값을 만들어서 Monster의 이동 거리를 추가할 것인지 결정하는 randomAttempt 메소드를 생성하고, moveCount가 private 선언이 되어있기 때문에 이를 컨트롤 할 수 있게 하는  plusMoveCount 메소드를 생성하였습니다.
 10. 게임을 종료하면 결과를 출력하는 endGame 메소드를 추가하고, monsters 배열에 있는 Monster들의 각각의 이동거리를 출력하는 printMonstersMovingDistance 메소드를 추가하였습니다. Monster별로 이동거리를 출력해주기 위해 showMovingDistance라는 메소드를 Monster 클래스에 추가해주었습니다.
 11. Arrays.fill은 한 객체로만 채워주어서 제가 원하는 결과가 나오지 않아 fillMonsterIntoMonsters라는 메소드를 직접 만들어주었습니다.
+
+# STEP2
+
+## 요구사항 분석
+
+- [x] depth를 최대 1단계로 줄이기
+- [x] else 문 사용하지 않기
+- [x] 메소드의 크기가 10라인을 넘지 않도록 하기
+- [x] 메소드가 한 번에 한 가지 일만 하도록 만들기
+- [x] 자바 코딩 컨벤션을 지키면서 만들기
+
+1. STEP1 에서 요구받았던 에러발생 시 종료되지 않고, 다시 입력받도록 하는 기능을 추가하였습니다.

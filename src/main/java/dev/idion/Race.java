@@ -25,23 +25,9 @@ public class Race {
 
     private void readyGame() {
         System.out.println("<몬스터 경주>");
-        inputMonsterCount();
-        inputAttemptCount();
-    }
-
-    private void inputMonsterCount() {
-        System.out.println("몬스터는 모두 몇 마리인가요?");
-        System.out.print(PROMPT);
-        String input = scanner.nextLine();
-        int count = 0;
-        try {
-            count = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            System.out.println("몬스터의 수를 정확히 입력해주세요.");
-            terminateGame(1); // Unix "Catchall for general errors"
-        }
-        monsters = new Monster[count];
+        monsters = new Monster[inputMonsterCount()];
         fillMonsterIntoMonsters();
+        inputAttemptCount();
     }
 
     private void fillMonsterIntoMonsters() {
@@ -50,15 +36,40 @@ public class Race {
         }
     }
 
+    private int inputMonsterCount() {
+        System.out.println("몬스터는 모두 몇 마리인가요?");
+        System.out.print(PROMPT);
+        Integer count = null;
+        while (count == null) {
+            count = inputIntTypeValue("몬스터의 수");
+        }
+        return count;
+    }
+
     private void inputAttemptCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         System.out.print(PROMPT);
-        String input = scanner.nextLine();
+        Integer count = null;
+        while (count == null) {
+            count = inputIntTypeValue("시도할 횟수");
+        }
+        attemptCount = count;
+    }
+
+    private Integer inputIntTypeValue(String targetErrorMessage) {
         try {
-            attemptCount = Integer.parseInt(input);
+            int inputValue = Integer.parseInt(scanner.nextLine());
+            validateInputValue(inputValue);
+            return inputValue;
         } catch (NumberFormatException e) {
-            System.out.println("시도할 횟수를 정확히 입력해주세요.");
-            terminateGame(1); // Unix "Catchall for general errors"
+            System.out.printf("%s를 정확히 입력해주세요.%n%s", targetErrorMessage, PROMPT);
+        }
+        return null;
+    }
+
+    private void validateInputValue(int count) {
+        if (count < 1) {
+            throw new NumberFormatException("숫자는 양수여야 합니다.");
         }
     }
 
@@ -74,9 +85,13 @@ public class Race {
     private void randomAttempt() throws NoSuchAlgorithmException {
         Random random = SecureRandom.getInstanceStrong();
         for (Monster monster : monsters) {
-            for (int i = 0; i < attemptCount; i++) {
-                moveMonster(random, monster);
-            }
+            attemptMoveMonster(random, monster);
+        }
+    }
+
+    private void attemptMoveMonster(Random random, Monster monster) {
+        for (int i = 0; i < attemptCount; i++) {
+            moveMonster(random, monster);
         }
     }
 
