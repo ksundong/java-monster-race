@@ -1,8 +1,7 @@
 package dev.idion;
 
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 import static dev.idion.StringConstants.*;
 
@@ -10,6 +9,7 @@ public class Race {
     Scanner scanner;
     int attemptCount;
     Monster[] monsters;
+    Map<Integer, List<String>> rankMap = new HashMap<>();
 
     public Race() {
         this.scanner = new Scanner(System.in);
@@ -92,6 +92,7 @@ public class Race {
 
     private void endGame() {
         printMonstersMovingDistance();
+        printWinnerMonster();
     }
 
     private void printMonstersMovingDistance() {
@@ -99,6 +100,31 @@ public class Race {
         for (Monster monster : monsters) {
             System.out.println(monster);
         }
+    }
+
+    private void printWinnerMonster() {
+        String winnerMonsterName = buildWinner(rankMonsters());
+        System.out.printf(WINNER_MESSAGE.toString(), winnerMonsterName);
+    }
+
+    private int rankMonsters() {
+        int winnerMoveCount = 0;
+        for (Monster monster : monsters) {
+            int moveCount = monster.getMoveCount();
+            winnerMoveCount = Math.max(winnerMoveCount, moveCount);
+            List<String> winners = rankMap.getOrDefault(moveCount, new ArrayList<>());
+            winners.add(monster.getMonsterName());
+            rankMap.put(moveCount, winners);
+        }
+        return winnerMoveCount;
+    }
+
+    private String buildWinner(int maxMoveCount) {
+        StringBuilder winnerBuilder = new StringBuilder();
+        List<String> winners = rankMap.get(maxMoveCount);
+        winners.forEach(winner -> winnerBuilder.append(winner).append(", "));
+        winnerBuilder.delete(winnerBuilder.lastIndexOf(","), winnerBuilder.length());
+        return winnerBuilder.toString();
     }
 
     private void terminateGame(int exitStatus) {
