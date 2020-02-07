@@ -19,7 +19,7 @@ public class Race {
         Race race = new Race();
         race.readyGame();
         race.startGame();
-        race.endGame();
+        race.printGameResult();
         race.terminateGame(0); // Normal Shutdown
     }
 
@@ -90,7 +90,7 @@ public class Race {
         }
     }
 
-    private void endGame() {
+    private void printGameResult() {
         printMonstersMovingDistance();
         printWinnerMonster();
     }
