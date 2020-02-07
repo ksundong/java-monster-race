@@ -2,6 +2,7 @@ package dev.idion;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import static dev.idion.StringConstants.*;
@@ -67,9 +68,7 @@ public class Race {
 
     private void randomAttempt() throws NoSuchAlgorithmException {
         Random random = SecureRandom.getInstanceStrong();
-        for (Monster monster : monsters) {
-            attemptMoveMonster(random, monster);
-        }
+        Arrays.stream(monsters).forEach(monster -> attemptMoveMonster(random, monster));
     }
 
     private void attemptMoveMonster(Random random, Monster monster) {
