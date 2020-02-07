@@ -8,9 +8,8 @@ import java.util.Scanner;
 public class Race {
     private static final String PROMPT = "> ";
     private static final String GAME_NAME = "<심심한 몬스터 경주>";
-    private static final String MONSTER_INPUT_MESSAGE = "몬스터는 모두 몇 마리인가요?";
+    private static final String INPUT_MESSAGE = "를 입력해주세요.";
     private static final String MONSTER_COUNT_STRING = "몬스터의 수";
-    private static final String ATTEMPT_INPUT_MESSAGE = "시도할 횟수는 몇 회인가요?";
     private static final String ATTEMPT_COUNT_STRING = "시도할 횟수";
     private static final String CORRECT_INPUT_STRING = "%s를 정확히 입력해주세요.%n%s";
     private static final String THE_NUMBER_MUST_BE_POSITIVE_VALUE = "숫자는 양수여야 합니다.";
@@ -35,46 +34,29 @@ public class Race {
 
     private void readyGame() {
         System.out.println(GAME_NAME);
-        monsters = new Monster[inputMonsterCount()];
-        fillMonsterIntoMonsters();
-        inputAttemptCount();
+        initializeMonsters();
+        attemptCount = inputValue(ATTEMPT_COUNT_STRING);
     }
 
-    private void fillMonsterIntoMonsters() {
+    private void initializeMonsters() {
+        monsters = new Monster[inputValue(MONSTER_COUNT_STRING)];
         for (int i = 0; i < monsters.length; i++) {
             monsters[i] = new Monster();
         }
     }
 
-    private int inputMonsterCount() {
-        System.out.println(MONSTER_INPUT_MESSAGE);
+    private int inputValue(String inputType) {
+        System.out.println(inputType + INPUT_MESSAGE);
         System.out.print(PROMPT);
-        Integer count = null;
-        while (count == null) {
-            count = inputIntTypeValue(MONSTER_COUNT_STRING);
+        while (true) {
+            try {
+                int count = Integer.parseInt(scanner.nextLine());
+                validateInputValue(count);
+                return count;
+            } catch (NumberFormatException e) {
+                System.out.printf(CORRECT_INPUT_STRING, inputType, PROMPT);
+            }
         }
-        return count;
-    }
-
-    private void inputAttemptCount() {
-        System.out.println(ATTEMPT_INPUT_MESSAGE);
-        System.out.print(PROMPT);
-        Integer count = null;
-        while (count == null) {
-            count = inputIntTypeValue(ATTEMPT_COUNT_STRING);
-        }
-        attemptCount = count;
-    }
-
-    private Integer inputIntTypeValue(String targetErrorMessage) {
-        try {
-            int inputValue = Integer.parseInt(scanner.nextLine());
-            validateInputValue(inputValue);
-            return inputValue;
-        } catch (NumberFormatException e) {
-            System.out.printf(CORRECT_INPUT_STRING, targetErrorMessage, PROMPT);
-        }
-        return null;
     }
 
     private void validateInputValue(int count) {
