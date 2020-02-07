@@ -15,7 +15,7 @@ public class Monster implements Movable {
 
     @Override
     public void move() throws NoSuchAlgorithmException {
-        moveCount += MonsterType.movePerType(SecureRandom.getInstanceStrong(), monsterType);
+        moveCount += monsterType.moveMonster(SecureRandom.getInstanceStrong());
     }
 
     public int getMoveCount() {
