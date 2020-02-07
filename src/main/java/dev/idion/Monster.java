@@ -3,7 +3,7 @@ package dev.idion;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
-public class Monster {
+public class Monster implements Movable {
     private int moveCount;
     private String monsterName;
     private MonsterType monsterType;
@@ -13,7 +13,8 @@ public class Monster {
         this.monsterType = monsterType;
     }
 
-    public void moveMonster() throws NoSuchAlgorithmException {
+    @Override
+    public void move() throws NoSuchAlgorithmException {
         moveCount += MonsterType.movePerType(SecureRandom.getInstanceStrong(), monsterType);
     }
 
