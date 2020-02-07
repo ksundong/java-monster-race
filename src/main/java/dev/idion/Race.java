@@ -40,6 +40,7 @@ public class Race {
     private void makeMonster(int index) {
         while (true) {
             try {
+                System.out.print(PROMPT);
                 String[] inputs = scanner.nextLine().split(",");
                 String monsterName = inputs[0].trim();
                 MonsterType monsterType = MonsterType.valueOf(inputs[1].trim());

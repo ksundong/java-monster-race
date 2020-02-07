@@ -2,7 +2,6 @@ package dev.idion;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Random;
 
 public class Monster {
     private int moveCount;
@@ -15,22 +14,7 @@ public class Monster {
     }
 
     public void moveMonster() throws NoSuchAlgorithmException {
-        moveCount += randomMove();
-    }
-
-    private int randomMove() throws NoSuchAlgorithmException {
-        Random random = SecureRandom.getInstanceStrong();
-        int randomValue = random.nextInt(10);
-        switch (monsterType) {
-            case 달리기:
-                return randomValue >= 4 ? 1 : 0;
-            case 비행:
-                return randomValue >= 6 ? 3 : 0;
-            case 에스퍼:
-                return randomValue == 9 ? random.nextInt(99) + 1 : 0;
-            default:
-                return 0;
-        }
+        moveCount += MonsterType.movePerType(SecureRandom.getInstanceStrong(), monsterType);
     }
 
     public int getMoveCount() {
