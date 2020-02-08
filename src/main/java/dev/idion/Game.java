@@ -6,10 +6,10 @@ import java.util.*;
 import static dev.idion.StringConstants.*;
 
 public class Game {
-    Scanner scanner;
-    int attemptCount;
-    Monster[] monsters;
-    Map<Integer, List<String>> rankMap;
+    private Scanner scanner;
+    private int attemptCount;
+    private Monster[] monsters;
+    private Map<Integer, List<String>> rankMap;
 
     public Game() {
         this.scanner = new Scanner(System.in);
