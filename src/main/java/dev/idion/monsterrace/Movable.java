@@ -1,4 +1,4 @@
-package dev.idion;
+package dev.idion.monsterrace;
 
 import java.security.NoSuchAlgorithmException;
 

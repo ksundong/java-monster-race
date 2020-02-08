@@ -1,9 +1,9 @@
-package dev.idion;
+package dev.idion.monsterrace;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
-import static dev.idion.StringConstants.*;
+import static dev.idion.monsterrace.StringConstants.*;
 
 public class Game {
     private Scanner scanner;
