@@ -9,10 +9,11 @@ public class Race {
     Scanner scanner;
     int attemptCount;
     Monster[] monsters;
-    Map<Integer, List<String>> rankMap = new HashMap<>();
+    Map<Integer, List<String>> rankMap;
 
     public Race() {
         this.scanner = new Scanner(System.in);
+        this.rankMap = new HashMap<>();
     }
 
     public static void main(String[] args) {
