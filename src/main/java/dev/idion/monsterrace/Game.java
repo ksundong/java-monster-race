@@ -66,12 +66,16 @@ public class Game {
 
     private void attemptMoveMonster(Monster monster) {
         for (int i = 0; i < attemptCount; i++) {
-            try {
-                monster.move();
-            } catch (NoSuchAlgorithmException e) {
-                System.out.println(ERROR_MESSAGE);
-                terminateGame(126);
-            }
+            tryMonsterMove(monster);
+        }
+    }
+
+    private void tryMonsterMove(Monster monster) {
+        try {
+            monster.move();
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println(ERROR_MESSAGE);
+            terminateGame(126);
         }
     }
 
