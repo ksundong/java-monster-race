@@ -19,19 +19,19 @@ public class Input {
         System.out.print(PROMPT);
         while (true) {
             try {
-                int count = Integer.parseInt(scanner.nextLine());
-                validateInputValue(count);
-                return count;
+                return getCheckedIntegerValue(scanner.nextLine());
             } catch (NumberFormatException e) {
                 System.out.printf(CORRECT_INPUT_STRING.toString(), inputType, PROMPT);
             }
         }
     }
 
-    private void validateInputValue(int count) {
-        if (count < 1) {
+    private int getCheckedIntegerValue(String input) {
+        int integer = Integer.parseInt(input);
+        if (integer < 1) {
             throw new NumberFormatException(THE_NUMBER_MUST_BE_POSITIVE_VALUE.toString());
         }
+        return integer;
     }
 
     public Monster inputMonsterInfo() {
