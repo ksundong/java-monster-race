@@ -8,11 +8,11 @@ import static dev.idion.monsterrace.StringConstants.*;
 
 public class Game {
     private int attemptCount;
+    private int winnerMoveCount;
     private Monster[] monsters;
     private Map<Integer, List<String>> rankMap;
     private Input input;
     private Printer printer;
-    private int winnerMoveCount;
 
     public Game() {
         this.rankMap = new HashMap<>();
