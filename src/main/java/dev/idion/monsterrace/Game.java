@@ -6,14 +6,14 @@ import java.util.*;
 import static dev.idion.monsterrace.StringConstants.*;
 
 public class Game {
-    private Scanner scanner;
     private int attemptCount;
     private Monster[] monsters;
     private Map<Integer, List<String>> rankMap;
+    private Input input;
 
     public Game() {
-        this.scanner = new Scanner(System.in);
         this.rankMap = new HashMap<>();
+        this.input = new Input(new Scanner(System.in));
     }
 
     public static void main(String[] args) {
@@ -27,11 +27,15 @@ public class Game {
     private void readyGame() {
         System.out.println(GAME_NAME);
         initializeMonsters();
-        attemptCount = inputValue(ATTEMPT_COUNT_STRING);
+        attemptCount = input.inputValue(ATTEMPT_COUNT_STRING);
     }
 
     private void initializeMonsters() {
-        monsters = new Monster[inputValue(MONSTER_COUNT_STRING)];
+        monsters = new Monster[input.inputValue(MONSTER_COUNT_STRING)];
+        inputMonstersInfo();
+    }
+
+    private void inputMonstersInfo() {
         System.out.println(INPUT_MONSTER_NAME_AND_TYPE);
         for (int i = 0; i < monsters.length; i++) {
             makeMonster(i);
@@ -41,35 +45,11 @@ public class Game {
     private void makeMonster(int index) {
         while (true) {
             try {
-                System.out.print(PROMPT);
-                String[] inputs = scanner.nextLine().split(",");
-                String monsterName = inputs[0].trim();
-                MonsterType monsterType = MonsterType.valueOf(inputs[1].trim());
-                monsters[index] = new Monster(monsterName, monsterType);
+                monsters[index] = input.inputMonsterInfo();
                 break;
             } catch (IllegalArgumentException e) {
                 System.out.println(TYPE_NOT_EXIST);
             }
-        }
-    }
-
-    private int inputValue(StringConstants inputType) {
-        System.out.println(inputType + INPUT_MESSAGE.toString());
-        System.out.print(PROMPT);
-        while (true) {
-            try {
-                int count = Integer.parseInt(scanner.nextLine());
-                validateInputValue(count);
-                return count;
-            } catch (NumberFormatException e) {
-                System.out.printf(CORRECT_INPUT_STRING.toString(), inputType, PROMPT);
-            }
-        }
-    }
-
-    private void validateInputValue(int count) {
-        if (count < 1) {
-            throw new NumberFormatException(THE_NUMBER_MUST_BE_POSITIVE_VALUE.toString());
         }
     }
 
@@ -131,7 +111,7 @@ public class Game {
 
     private void terminateGame(int exitStatus) {
         System.out.println(GAME_EXIT_MESSAGE);
-        scanner.close();
+        input.close();
         System.exit(exitStatus);
     }
 }
