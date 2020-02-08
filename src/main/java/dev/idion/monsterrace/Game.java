@@ -2,6 +2,7 @@ package dev.idion.monsterrace;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
+import java.util.stream.IntStream;
 
 import static dev.idion.monsterrace.StringConstants.*;
 
@@ -41,9 +42,7 @@ public class Game {
 
     private void inputMonstersInfo() {
         System.out.println(INPUT_MONSTER_NAME_AND_TYPE);
-        for (int i = 0; i < monsters.length; i++) {
-            makeMonster(i);
-        }
+        IntStream.range(0, monsters.length).forEach(this::makeMonster);
     }
 
     private void makeMonster(int index) {
