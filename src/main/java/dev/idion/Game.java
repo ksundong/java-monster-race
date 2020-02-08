@@ -5,23 +5,23 @@ import java.util.*;
 
 import static dev.idion.StringConstants.*;
 
-public class Race {
+public class Game {
     Scanner scanner;
     int attemptCount;
     Monster[] monsters;
     Map<Integer, List<String>> rankMap;
 
-    public Race() {
+    public Game() {
         this.scanner = new Scanner(System.in);
         this.rankMap = new HashMap<>();
     }
 
     public static void main(String[] args) {
-        Race race = new Race();
-        race.readyGame();
-        race.startGame();
-        race.printGameResult();
-        race.terminateGame(0); // Normal Shutdown
+        Game game = new Game();
+        game.readyGame();
+        game.startGame();
+        game.printGameResult();
+        game.terminateGame(0); // Normal Shutdown
     }
 
     private void readyGame() {
