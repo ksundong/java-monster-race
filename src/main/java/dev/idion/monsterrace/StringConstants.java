@@ -12,7 +12,7 @@ public enum StringConstants {
     ERROR_MESSAGE("게임 실행 도중 오류가 발생했습니다."),
     TYPE_NOT_EXIST("입력하신 타입은 존재하지 않는 타입입니다. 다시 입력해주세요."),
     RESULT_MESSAGE("<실행 결과>"),
-    WINNER_MESSAGE("축하합니다! %s가 몬스터 레이스에서 우승했습니다!%n"),
+    WINNER_MESSAGE("축하합니다! %s이(가) 몬스터 레이스에서 우승했습니다!%n"),
     GAME_EXIT_MESSAGE("게임을 종료합니다.");
 
     private String message;
