@@ -10,16 +10,20 @@ public class Game {
     private Monster[] monsters;
     private Map<Integer, List<String>> rankMap;
     private Input input;
+    private Printer printer;
+    private int winnerMoveCount;
 
     public Game() {
         this.rankMap = new HashMap<>();
         this.input = new Input(new Scanner(System.in));
+        this.printer = new Printer();
     }
 
     public static void main(String[] args) {
         Game game = new Game();
         game.readyGame();
         game.startGame();
+        game.rankMonsters();
         game.printGameResult();
         game.terminateGame(0); // Normal Shutdown
     }
@@ -73,40 +77,19 @@ public class Game {
     }
 
     private void printGameResult() {
-        printMonstersMovingDistance();
-        printWinnerMonster();
+        printer.printMonstersMovingDistance(monsters);
+        printer.printWinnerMonster(rankMap, winnerMoveCount);
     }
 
-    private void printMonstersMovingDistance() {
-        System.out.println(RESULT_MESSAGE);
-        for (Monster monster : monsters) {
-            System.out.println(monster);
-        }
-    }
-
-    private void printWinnerMonster() {
-        String winnerMonsterName = buildWinner(rankMonsters());
-        System.out.printf(WINNER_MESSAGE.toString(), winnerMonsterName);
-    }
-
-    private int rankMonsters() {
-        int winnerMoveCount = 0;
-        for (Monster monster : monsters) {
-            int moveCount = monster.getMoveCount();
-            winnerMoveCount = Math.max(winnerMoveCount, moveCount);
-            List<String> winners = rankMap.getOrDefault(moveCount, new ArrayList<>());
-            winners.add(monster.getMonsterName());
-            rankMap.put(moveCount, winners);
-        }
-        return winnerMoveCount;
-    }
-
-    private String buildWinner(int maxMoveCount) {
-        StringBuilder winnerBuilder = new StringBuilder();
-        List<String> winners = rankMap.get(maxMoveCount);
-        winners.forEach(winner -> winnerBuilder.append(winner).append(", "));
-        winnerBuilder.delete(winnerBuilder.lastIndexOf(","), winnerBuilder.length());
-        return winnerBuilder.toString();
+    private void rankMonsters() {
+        Arrays.stream(monsters)
+                .forEach(monster -> {
+                    int moveCount = monster.getMoveCount();
+                    winnerMoveCount = Math.max(winnerMoveCount, moveCount);
+                    List<String> winners = rankMap.getOrDefault(moveCount, new ArrayList<>());
+                    winners.add(monster.getMonsterName());
+                    rankMap.put(moveCount, winners);
+                });
     }
 
     private void terminateGame(int exitStatus) {
