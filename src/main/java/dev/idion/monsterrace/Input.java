@@ -2,10 +2,7 @@ package dev.idion.monsterrace;
 
 import java.util.Scanner;
 
-import static dev.idion.monsterrace.StringConstants.CORRECT_INPUT_STRING;
-import static dev.idion.monsterrace.StringConstants.INPUT_MESSAGE;
-import static dev.idion.monsterrace.StringConstants.PROMPT;
-import static dev.idion.monsterrace.StringConstants.THE_NUMBER_MUST_BE_POSITIVE_VALUE;
+import static dev.idion.monsterrace.StringConstants.*;
 
 public class Input {
     private Scanner scanner;
@@ -21,7 +18,7 @@ public class Input {
             try {
                 return getCheckedIntegerValue(scanner.nextLine());
             } catch (NumberFormatException e) {
-                System.out.printf(CORRECT_INPUT_STRING.toString(), inputType, PROMPT);
+                System.out.printf(CORRECT_INPUT_STRING.toString(), inputType, e.getMessage(), PROMPT);
             }
         }
     }
