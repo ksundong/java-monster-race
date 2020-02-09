@@ -5,8 +5,8 @@ import java.security.SecureRandom;
 
 public class Monster implements Movable {
     private int moveCount;
-    private String monsterName;
-    private MonsterType monsterType;
+    private final String monsterName;
+    private final MonsterType monsterType;
 
     public Monster(String monsterName, MonsterType monsterType) {
         this.monsterName = monsterName;

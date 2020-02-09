@@ -5,7 +5,7 @@ import java.util.Scanner;
 import static dev.idion.monsterrace.StringConstants.*;
 
 public class Input {
-    private Scanner scanner;
+    private final Scanner scanner;
 
     public Input(Scanner scanner) {
         this.scanner = scanner;

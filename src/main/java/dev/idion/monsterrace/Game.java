@@ -10,9 +10,9 @@ public class Game {
     private int attemptCount;
     private int winnerMoveCount;
     private Monster[] monsters;
-    private Map<Integer, List<String>> rankMap;
-    private Input input;
-    private Printer printer;
+    private final Map<Integer, List<String>> rankMap;
+    private final Input input;
+    private final Printer printer;
 
     public Game() {
         this.rankMap = new HashMap<>();
