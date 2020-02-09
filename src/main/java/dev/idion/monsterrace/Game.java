@@ -42,6 +42,7 @@ public class Game {
 
     private void inputMonstersInfo() {
         System.out.println(INPUT_MONSTER_NAME_AND_TYPE);
+        System.out.println(SHOW_MONSTER_TYPES);
         IntStream.range(0, monsters.length).forEach(this::makeMonster);
     }
 
