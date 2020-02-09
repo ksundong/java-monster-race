@@ -52,6 +52,8 @@ public class Game {
                 break;
             } catch (IllegalArgumentException e) {
                 System.out.println(TYPE_NOT_EXIST);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println(e.getMessage());
             }
         }
     }

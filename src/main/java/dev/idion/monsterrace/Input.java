@@ -34,6 +34,9 @@ public class Input {
     public Monster inputMonsterInfo() {
         System.out.print(PROMPT);
         String[] inputs = scanner.nextLine().split(",");
+        if (inputs.length < 2) {
+            throw new ArrayIndexOutOfBoundsException(INPUT_CORRECT_MONSTER_NAME_AND_TYPE.toString());
+        }
         String monsterName = inputs[0].trim();
         MonsterType monsterType = MonsterType.valueOf(inputs[1].trim());
         return new Monster(monsterName, monsterType);
