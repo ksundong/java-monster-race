@@ -5,8 +5,8 @@ import dev.idion.monsterrace.io.Printer;
 import dev.idion.monsterrace.monster.Monster;
 import dev.idion.monsterrace.monster.MonsterManager;
 
-import java.util.*;
-import java.util.stream.IntStream;
+import java.util.Arrays;
+import java.util.Scanner;
 
 import static dev.idion.monsterrace.StringConstants.*;
 
@@ -62,7 +62,10 @@ public class Game {
     private void inputMonstersInfo() {
         System.out.println(INPUT_MONSTER_NAME_AND_TYPE);
         System.out.println(SHOW_MONSTER_TYPES);
-        IntStream.range(0, monsters.length).forEach(this::makeMonster);
+        int monsterCount = monsters.length;
+        for (int i = 0; i < monsterCount; i++) {
+            makeMonster(i);
+        }
     }
 
     private void makeMonster(int index) {
@@ -79,10 +82,6 @@ public class Game {
     }
 
     private void startGame() {
-        randomAttempt();
-    }
-
-    private void randomAttempt() {
         Arrays.stream(monsters).forEach(this::attemptMoveMonster);
     }
 

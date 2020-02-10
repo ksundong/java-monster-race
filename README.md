@@ -108,3 +108,4 @@
 6. Monster를 관리해줄 Monster Manager를 추가하였습니다.
 7. MonsterManager에 메뉴 선택 기능을 추가하였습니다.
 8. MonsterManager에 메뉴 선택 후 분기 부분을 추가하였습니다.
+9. Step3의 변경사항을 머지하였습니다.
