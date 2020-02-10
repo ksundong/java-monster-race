@@ -1,5 +1,6 @@
 package dev.idion.monsterrace;
 
+import dev.idion.monsterrace.monster.MonsterManagerMenu;
 import dev.idion.monsterrace.monster.MonsterType;
 
 import java.util.Arrays;
@@ -7,7 +8,8 @@ import java.util.Arrays;
 public enum StringConstants {
     PROMPT("> "),
     GAME_NAME("<심심한 몬스터 경주>"),
-    PLEASE_SELECT_MENUS("원하는 메뉴를 선택해주세요. " + showMenuRange(MainMenu.values())),
+    PLEASE_SELECT_MENUS_MAIN("원하는 메뉴를 선택해주세요. " + showMenuRange(MainMenu.values())),
+    PLEASE_SELECT_MENUS_MONSTER("원하는 메뉴를 선택해주세요. " + showMenuRange(MonsterManagerMenu.values())),
     MENU_NUMBER("메뉴 번호"),
     THE_NUMBER_IS_NOT_VALID("해당 메뉴 번호는 없는 번호입니다. 다시 입력해주세요."),
     INPUT_MESSAGE("를 입력해주세요."),

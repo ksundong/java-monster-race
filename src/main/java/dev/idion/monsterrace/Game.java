@@ -31,7 +31,7 @@ public class Game {
         }
     }
 
-    public void selectMenu() {
+    private void selectMenu() {
         switch (input.selectMenu()) {
             case 1:
                 new MonsterManager(input, printer);

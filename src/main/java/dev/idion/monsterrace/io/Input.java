@@ -18,7 +18,7 @@ public class Input {
     }
 
     public int selectMenu() {
-        System.out.println(PLEASE_SELECT_MENUS);
+        System.out.println(PLEASE_SELECT_MENUS_MAIN);
         Arrays.stream(MainMenu.values()).forEach(System.out::println);
         System.out.print(PROMPT);
         while (true) {

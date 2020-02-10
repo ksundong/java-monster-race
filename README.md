@@ -106,3 +106,4 @@
 4. Input Output 을 담당하는 부분을 io 패키지로 이동하였습니다.
 5. Monster에 관련된 부분을 monster 패키지로 이동하였습니다.
 6. Monster를 관리해줄 Monster Manager를 추가하였습니다.
+7. MonsterManager에 메뉴 선택 기능을 추가하였습니다.

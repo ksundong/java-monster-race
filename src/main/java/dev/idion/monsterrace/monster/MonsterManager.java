@@ -6,6 +6,10 @@ import dev.idion.monsterrace.io.MonsterFileWriter;
 import dev.idion.monsterrace.io.Printer;
 
 import java.io.IOException;
+import java.util.Arrays;
+
+import static dev.idion.monsterrace.StringConstants.PLEASE_SELECT_MENUS_MONSTER;
+import static dev.idion.monsterrace.StringConstants.PROMPT;
 
 public class MonsterManager {
     private final Input input;
@@ -19,9 +23,13 @@ public class MonsterManager {
         this.monsterFileReader = new MonsterFileReader();
         this.monsterFileWriter = new MonsterFileWriter();
         selectMonsterMenu();
+        close();
     }
 
     private void selectMonsterMenu() {
+        System.out.println(PLEASE_SELECT_MENUS_MONSTER);
+        Arrays.stream(MonsterManagerMenu.values()).forEach(System.out::println);
+        System.out.print(PROMPT);
     }
 
     private void close() {
