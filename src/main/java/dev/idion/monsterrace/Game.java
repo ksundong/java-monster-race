@@ -1,6 +1,5 @@
 package dev.idion.monsterrace;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import java.util.stream.IntStream;
 
@@ -74,12 +73,7 @@ public class Game {
     }
 
     private void tryMonsterMove(Monster monster) {
-        try {
-            monster.move();
-        } catch (NoSuchAlgorithmException e) {
-            System.out.println(ERROR_MESSAGE);
-            terminateGame(126);
-        }
+        monster.move();
     }
 
     private void printGameResult() {

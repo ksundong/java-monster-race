@@ -1,7 +1,6 @@
 package dev.idion.monsterrace;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
+import java.util.Random;
 
 public class Monster implements Movable {
     private int moveCount;
@@ -14,8 +13,8 @@ public class Monster implements Movable {
     }
 
     @Override
-    public void move() throws NoSuchAlgorithmException {
-        moveCount += monsterType.moveMonster(SecureRandom.getInstanceStrong());
+    public void move() {
+        moveCount += monsterType.moveMonster(new Random());
     }
 
     public int getMoveCount() {
