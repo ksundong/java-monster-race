@@ -3,6 +3,7 @@ package dev.idion.monsterrace;
 import dev.idion.monsterrace.io.Input;
 import dev.idion.monsterrace.io.Printer;
 import dev.idion.monsterrace.monster.Monster;
+import dev.idion.monsterrace.monster.MonsterManager;
 
 import java.util.*;
 import java.util.stream.IntStream;
@@ -30,10 +31,10 @@ public class Game {
         }
     }
 
-    private void selectMenu() {
+    public void selectMenu() {
         switch (input.selectMenu()) {
             case 1:
-                // 메뉴 로직으로 분기
+                new MonsterManager(input, printer);
                 break;
             case 2:
                 this.readyGame();
