@@ -5,7 +5,10 @@ import dev.idion.monsterrace.monster.Monster;
 
 import java.util.Arrays;
 
-import static dev.idion.monsterrace.StringConstants.*;
+import static dev.idion.monsterrace.StringConstants.ATTEMPT_COUNT_STRING;
+import static dev.idion.monsterrace.StringConstants.INPUT_MONSTER_NAME_AND_TYPE;
+import static dev.idion.monsterrace.StringConstants.MONSTER_COUNT_STRING;
+import static dev.idion.monsterrace.StringConstants.SHOW_MONSTER_TYPES;
 
 public class InGameMonsterManager {
     private int attemptCount;
@@ -44,7 +47,7 @@ public class InGameMonsterManager {
                 monsters[index] = input.inputMonsterInfo();
                 break;
             } catch (IllegalArgumentException e) {
-                System.out.println(TYPE_NOT_EXIST);
+                System.out.println(e.getMessage());
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println(e.getMessage());
             }
@@ -52,7 +55,9 @@ public class InGameMonsterManager {
     }
 
     public void moveMonsters() {
-        Arrays.stream(monsters).forEach(this::attemptMoveMonster);
+        Arrays
+                .stream(monsters)
+                .forEach(this::attemptMoveMonster);
     }
 
     private void attemptMoveMonster(Monster monster) {

@@ -20,7 +20,7 @@ public enum StringConstants {
     CORRECT_INPUT_STRING("%s를 정확히 입력해주세요. 에러메시지: %s%n%s"),
     THE_NUMBER_MUST_BE_POSITIVE_VALUE("숫자는 양수여야 합니다."),
     INPUT_CORRECT_MONSTER_NAME_AND_TYPE("이름과 타입은 ','로 구분되어야 합니다."),
-    TYPE_NOT_EXIST("입력하신 타입은 존재하지 않는 타입입니다. 다시 입력해주세요."),
+    TYPE_NOT_EXIST("%s는 타입에 맞지않습니다."),
     RESULT_MESSAGE("<실행 결과>"),
     WINNER_MESSAGE("축하합니다! %s이(가) 몬스터 레이스에서 우승했습니다!%n"),
     GAME_EXIT_MESSAGE("게임을 종료합니다.");

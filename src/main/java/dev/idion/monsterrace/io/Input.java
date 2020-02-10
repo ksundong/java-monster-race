@@ -33,6 +33,8 @@ public class Input {
             case PLEASE_SELECT_MENUS_MONSTER:
                 Arrays.stream(MonsterManagerMenu.values()).forEach(System.out::println);
                 break;
+            default:
+                // TODO: default에서 무엇을 해주어야 할까?
         }
     }
 
@@ -67,11 +69,11 @@ public class Input {
             throw new ArrayIndexOutOfBoundsException(INPUT_CORRECT_MONSTER_NAME_AND_TYPE.toString());
         }
         String monsterName = inputs[0].trim();
-        MonsterType monsterType = MonsterType.valueOf(inputs[1].trim());
+        MonsterType monsterType = MonsterType.valueOfKoreanType(inputs[1].trim());
         return new Monster(monsterName, monsterType);
     }
 
     public void close() {
-        if (scanner != null) scanner.close();
+        scanner.close();
     }
 }
