@@ -1,5 +1,6 @@
 package dev.idion.monsterrace;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static dev.idion.monsterrace.StringConstants.*;
@@ -9,6 +10,22 @@ public class Input {
 
     public Input(Scanner scanner) {
         this.scanner = scanner;
+    }
+
+    public int selectMenu() {
+        System.out.println(PLEASE_SELECT_MENUS);
+        Arrays.stream(MainMenu.values()).forEach(System.out::println);
+        System.out.print(PROMPT);
+        while (true) {
+            try {
+                return getCheckedIntegerValue(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.printf(CORRECT_INPUT_STRING.toString(),
+                        MENU_NUMBER,
+                        e.getMessage(),
+                        PROMPT);
+            }
+        }
     }
 
     public int inputValue(StringConstants inputType) {

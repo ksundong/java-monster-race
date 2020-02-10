@@ -21,11 +21,26 @@ public class Game {
 
     public static void main(String[] args) {
         Game game = new Game();
-        game.readyGame();
-        game.startGame();
-        game.rankMonsters();
-        game.printGameResult();
-        game.terminateGame();
+        while (true) {
+            game.selectMenu();
+        }
+    }
+
+    private void selectMenu() {
+        switch (input.selectMenu()) {
+            case 1:
+                // 메뉴 로직으로 분기
+                break;
+            case 2:
+                this.readyGame();
+                this.startGame();
+                this.rankMonsters();
+                this.printGameResult();
+                this.terminateGame();
+                break;
+            default:
+                System.out.println(THE_NUMBER_IS_NOT_VALID);
+        }
     }
 
     private void readyGame() {
@@ -91,5 +106,6 @@ public class Game {
     private void terminateGame() {
         System.out.println(GAME_EXIT_MESSAGE);
         input.close();
+        System.exit(0);
     }
 }

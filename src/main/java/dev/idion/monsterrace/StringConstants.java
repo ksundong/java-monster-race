@@ -5,6 +5,9 @@ import java.util.Arrays;
 public enum StringConstants {
     PROMPT("> "),
     GAME_NAME("<심심한 몬스터 경주>"),
+    PLEASE_SELECT_MENUS("원하는 메뉴를 선택해주세요. " + showMenuRange(MainMenu.values())),
+    MENU_NUMBER("메뉴 번호"),
+    THE_NUMBER_IS_NOT_VALID("해당 메뉴 번호는 없는 번호입니다. 다시 입력해주세요."),
     INPUT_MESSAGE("를 입력해주세요."),
     MONSTER_COUNT_STRING("몬스터의 수"),
     ATTEMPT_COUNT_STRING("시도할 횟수"),
@@ -18,10 +21,14 @@ public enum StringConstants {
     WINNER_MESSAGE("축하합니다! %s이(가) 몬스터 레이스에서 우승했습니다!%n"),
     GAME_EXIT_MESSAGE("게임을 종료합니다.");
 
-    private String message;
+    private final String message;
 
     StringConstants(String message) {
         this.message = message;
+    }
+
+    private static String showMenuRange(Object[] array) {
+        return "[1 - " + array.length + "]";
     }
 
     @Override
