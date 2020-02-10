@@ -8,12 +8,12 @@ public enum MonsterType {
             return random.nextInt(10) >= 4 ? 1 : 0;
         }
     },
-    비행{
+    비행 {
         public int moveMonster(Random random) {
             return random.nextInt(10) >= 6 ? 3 : 0;
         }
     },
-    에스퍼{
+    에스퍼 {
         public int moveMonster(Random random) {
             return random.nextInt(10) == 9 ? random.nextInt(99) + 1 : 0;
         }
