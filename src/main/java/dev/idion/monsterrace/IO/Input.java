@@ -1,4 +1,9 @@
-package dev.idion.monsterrace;
+package dev.idion.monsterrace.IO;
+
+import dev.idion.monsterrace.MainMenu;
+import dev.idion.monsterrace.Monster;
+import dev.idion.monsterrace.MonsterType;
+import dev.idion.monsterrace.StringConstants;
 
 import java.util.Arrays;
 import java.util.Scanner;
