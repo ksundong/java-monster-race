@@ -6,10 +6,9 @@ import dev.idion.monsterrace.io.MonsterFileWriter;
 import dev.idion.monsterrace.io.Printer;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import static dev.idion.monsterrace.StringConstants.PLEASE_SELECT_MENUS_MONSTER;
-import static dev.idion.monsterrace.StringConstants.PROMPT;
+import static dev.idion.monsterrace.StringConstants.THE_NUMBER_IS_NOT_VALID;
 
 public class MonsterManager {
     private final Input input;
@@ -22,14 +21,29 @@ public class MonsterManager {
         this.printer = printer;
         this.monsterFileReader = new MonsterFileReader();
         this.monsterFileWriter = new MonsterFileWriter();
-        selectMonsterMenu();
-        close();
+        boolean loopCondition = true;
+        while (loopCondition) {
+            loopCondition = selectMonsterMenu();
+        }
     }
 
-    private void selectMonsterMenu() {
-        System.out.println(PLEASE_SELECT_MENUS_MONSTER);
-        Arrays.stream(MonsterManagerMenu.values()).forEach(System.out::println);
-        System.out.print(PROMPT);
+    private boolean selectMonsterMenu() {
+        switch (input.selectMenu(PLEASE_SELECT_MENUS_MONSTER)) {
+            case 1:
+                return true;
+            case 2:
+                return true;
+            case 3:
+                return true;
+            case 4:
+                return true;
+            case 5:
+                close();
+                return false;
+            default:
+                System.out.println(THE_NUMBER_IS_NOT_VALID);
+                return true;
+        }
     }
 
     private void close() {

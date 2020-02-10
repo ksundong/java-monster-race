@@ -32,7 +32,7 @@ public class Game {
     }
 
     private void selectMenu() {
-        switch (input.selectMenu()) {
+        switch (input.selectMenu(PLEASE_SELECT_MENUS_MAIN)) {
             case 1:
                 new MonsterManager(input, printer);
                 break;

@@ -2,6 +2,7 @@ package dev.idion.monsterrace.io;
 
 import dev.idion.monsterrace.MainMenu;
 import dev.idion.monsterrace.monster.Monster;
+import dev.idion.monsterrace.monster.MonsterManagerMenu;
 import dev.idion.monsterrace.monster.MonsterType;
 import dev.idion.monsterrace.StringConstants;
 
@@ -17,30 +18,36 @@ public class Input {
         this.scanner = scanner;
     }
 
-    public int selectMenu() {
-        System.out.println(PLEASE_SELECT_MENUS_MAIN);
-        Arrays.stream(MainMenu.values()).forEach(System.out::println);
+    public int selectMenu(StringConstants constants) {
+        System.out.println(constants);
+        printMenus(constants);
         System.out.print(PROMPT);
-        while (true) {
-            try {
-                return getCheckedIntegerValue(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.printf(CORRECT_INPUT_STRING.toString(),
-                        MENU_NUMBER,
-                        e.getMessage(),
-                        PROMPT);
-            }
+        return inputIntegerValue(MENU_NUMBER);
+    }
+
+    private void printMenus(StringConstants constants) {
+        switch (constants) {
+            case PLEASE_SELECT_MENUS_MAIN:
+                Arrays.stream(MainMenu.values()).forEach(System.out::println);
+                break;
+            case PLEASE_SELECT_MENUS_MONSTER:
+                Arrays.stream(MonsterManagerMenu.values()).forEach(System.out::println);
+                break;
         }
     }
 
     public int inputValue(StringConstants inputType) {
         System.out.println(inputType + INPUT_MESSAGE.toString());
         System.out.print(PROMPT);
+        return inputIntegerValue(inputType);
+    }
+
+    private int inputIntegerValue(StringConstants menuNumber) {
         while (true) {
             try {
                 return getCheckedIntegerValue(scanner.nextLine());
             } catch (NumberFormatException e) {
-                System.out.printf(CORRECT_INPUT_STRING.toString(), inputType, e.getMessage(), PROMPT);
+                System.out.printf(CORRECT_INPUT_STRING.toString(), menuNumber, e.getMessage(), PROMPT);
             }
         }
     }
