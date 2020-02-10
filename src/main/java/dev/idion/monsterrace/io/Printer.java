@@ -1,6 +1,6 @@
 package dev.idion.monsterrace.io;
 
-import dev.idion.monsterrace.Monster;
+import dev.idion.monsterrace.monster.Monster;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,5 +1,7 @@
 package dev.idion.monsterrace;
 
+import dev.idion.monsterrace.monster.MonsterType;
+
 import java.util.Arrays;
 
 public enum StringConstants {

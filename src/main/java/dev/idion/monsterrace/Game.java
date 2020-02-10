@@ -2,6 +2,7 @@ package dev.idion.monsterrace;
 
 import dev.idion.monsterrace.io.Input;
 import dev.idion.monsterrace.io.Printer;
+import dev.idion.monsterrace.monster.Monster;
 
 import java.util.*;
 import java.util.stream.IntStream;

@@ -1,4 +1,4 @@
-package dev.idion.monsterrace;
+package dev.idion.monsterrace.monster;
 
 public interface Movable {
     void move();
