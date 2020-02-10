@@ -14,8 +14,8 @@ import static dev.idion.monsterrace.StringConstants.*;
 public class Input {
     private final Scanner scanner;
 
-    public Input(Scanner scanner) {
-        this.scanner = scanner;
+    public Input() {
+        this.scanner = new Scanner(System.in);
     }
 
     public int selectMenu(StringConstants constants) {

@@ -110,3 +110,4 @@
 8. MonsterManager에 메뉴 선택 후 분기 부분을 추가하였습니다.
 9. Step3의 변경사항을 머지하였습니다.
 10. Step3의 코멘트된 사항이었던 랭크를 매기는 클래스를 따로 분리하여 ScoreBoard라는 클래스를 생성해주었습니다.
+11. 위의 변경사항에 더하여 Game이 정말 Game의 역할만 수행할 수 있도록 Monster를 관리하는 InGameMonsterManager를 추가하였습니다.

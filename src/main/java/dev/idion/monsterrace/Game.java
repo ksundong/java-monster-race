@@ -2,25 +2,24 @@ package dev.idion.monsterrace;
 
 import dev.idion.monsterrace.io.Input;
 import dev.idion.monsterrace.io.Printer;
-import dev.idion.monsterrace.monster.Monster;
 import dev.idion.monsterrace.monster.MonsterManager;
 
-import java.util.Arrays;
-import java.util.Scanner;
-
-import static dev.idion.monsterrace.StringConstants.*;
+import static dev.idion.monsterrace.StringConstants.GAME_EXIT_MESSAGE;
+import static dev.idion.monsterrace.StringConstants.GAME_NAME;
+import static dev.idion.monsterrace.StringConstants.PLEASE_SELECT_MENUS_MAIN;
+import static dev.idion.monsterrace.StringConstants.THE_NUMBER_IS_NOT_VALID;
 
 public class Game {
-    private int attemptCount;
-    private Monster[] monsters;
-    private ScoreBoard scoreBoard;
+    private final InGameMonsterManager inGameMonsterManager;
+    private final ScoreBoard scoreBoard;
     private final Input input;
     private final Printer printer;
 
     public Game() {
         this.scoreBoard = new ScoreBoard();
-        this.input = new Input(new Scanner(System.in));
+        this.input = new Input();
         this.printer = new Printer();
+        this.inGameMonsterManager = new InGameMonsterManager(input);
     }
 
     public static void main(String[] args) {
@@ -36,11 +35,10 @@ public class Game {
                 new MonsterManager(input, printer);
                 break;
             case 2:
-                this.readyGame();
-                this.startGame();
-                scoreBoard.rankMonsters(monsters);
-                this.printGameResult();
-                this.terminateGame();
+                readyGame();
+                startGame();
+                printGameResult();
+                terminateGame();
                 break;
             default:
                 System.out.println(THE_NUMBER_IS_NOT_VALID);
@@ -49,49 +47,17 @@ public class Game {
 
     private void readyGame() {
         System.out.println(GAME_NAME);
-        initializeMonsters();
-        attemptCount = input.inputValue(ATTEMPT_COUNT_STRING);
-    }
-
-    private void initializeMonsters() {
-        monsters = new Monster[input.inputValue(MONSTER_COUNT_STRING)];
-        inputMonstersInfo();
-    }
-
-    private void inputMonstersInfo() {
-        System.out.println(INPUT_MONSTER_NAME_AND_TYPE);
-        System.out.println(SHOW_MONSTER_TYPES);
-        int monsterCount = monsters.length;
-        for (int i = 0; i < monsterCount; i++) {
-            makeMonster(i);
-        }
-    }
-
-    private void makeMonster(int index) {
-        while (true) {
-            try {
-                monsters[index] = input.inputMonsterInfo();
-                break;
-            } catch (IllegalArgumentException e) {
-                System.out.println(TYPE_NOT_EXIST);
-            } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println(e.getMessage());
-            }
-        }
+        inGameMonsterManager.initializeMonsters();
+        inGameMonsterManager.inputAttemptCount();
     }
 
     private void startGame() {
-        Arrays.stream(monsters).forEach(this::attemptMoveMonster);
-    }
-
-    private void attemptMoveMonster(Monster monster) {
-        for (int i = 0; i < attemptCount; i++) {
-            monster.move();
-        }
+        inGameMonsterManager.moveMonsters();
+        scoreBoard.rankMonsters(inGameMonsterManager.getMonsters());
     }
 
     private void printGameResult() {
-        printer.printMonstersMovingDistance(monsters);
+        printer.printMonstersMovingDistance(inGameMonsterManager.getMonsters());
         printer.printWinnerMonster(scoreBoard);
     }
 
