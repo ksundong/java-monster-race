@@ -25,7 +25,7 @@ public class Game {
         game.startGame();
         game.rankMonsters();
         game.printGameResult();
-        game.terminateGame(0); // Normal Shutdown
+        game.terminateGame();
     }
 
     private void readyGame() {
@@ -68,12 +68,8 @@ public class Game {
 
     private void attemptMoveMonster(Monster monster) {
         for (int i = 0; i < attemptCount; i++) {
-            tryMonsterMove(monster);
+            monster.move();
         }
-    }
-
-    private void tryMonsterMove(Monster monster) {
-        monster.move();
     }
 
     private void printGameResult() {
@@ -92,9 +88,8 @@ public class Game {
                 });
     }
 
-    private void terminateGame(int exitStatus) {
+    private void terminateGame() {
         System.out.println(GAME_EXIT_MESSAGE);
         input.close();
-        System.exit(exitStatus);
     }
 }
