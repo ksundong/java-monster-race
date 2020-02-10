@@ -1,4 +1,4 @@
-package dev.idion.monsterrace.IO;
+package dev.idion.monsterrace.io;
 
 import dev.idion.monsterrace.MainMenu;
 import dev.idion.monsterrace.Monster;
