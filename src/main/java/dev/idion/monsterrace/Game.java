@@ -12,14 +12,13 @@ import static dev.idion.monsterrace.StringConstants.*;
 
 public class Game {
     private int attemptCount;
-    private int winnerMoveCount;
     private Monster[] monsters;
-    private final Map<Integer, List<String>> rankMap;
+    private ScoreBoard scoreBoard;
     private final Input input;
     private final Printer printer;
 
     public Game() {
-        this.rankMap = new HashMap<>();
+        this.scoreBoard = new ScoreBoard();
         this.input = new Input(new Scanner(System.in));
         this.printer = new Printer();
     }
@@ -39,7 +38,7 @@ public class Game {
             case 2:
                 this.readyGame();
                 this.startGame();
-                this.rankMonsters();
+                scoreBoard.rankMonsters(monsters);
                 this.printGameResult();
                 this.terminateGame();
                 break;
@@ -93,18 +92,7 @@ public class Game {
 
     private void printGameResult() {
         printer.printMonstersMovingDistance(monsters);
-        printer.printWinnerMonster(rankMap, winnerMoveCount);
-    }
-
-    private void rankMonsters() {
-        Arrays.stream(monsters)
-                .forEach(monster -> {
-                    int moveCount = monster.getMoveCount();
-                    winnerMoveCount = Math.max(winnerMoveCount, moveCount);
-                    List<String> winners = rankMap.getOrDefault(moveCount, new ArrayList<>());
-                    winners.add(monster.getMonsterName());
-                    rankMap.put(moveCount, winners);
-                });
+        printer.printWinnerMonster(scoreBoard);
     }
 
     private void terminateGame() {
