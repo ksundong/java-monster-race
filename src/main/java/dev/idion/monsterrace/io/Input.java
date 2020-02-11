@@ -1,10 +1,10 @@
 package dev.idion.monsterrace.io;
 
 import dev.idion.monsterrace.MainMenu;
+import dev.idion.monsterrace.StringConstants;
 import dev.idion.monsterrace.monster.Monster;
 import dev.idion.monsterrace.monster.MonsterManagerMenu;
 import dev.idion.monsterrace.monster.MonsterType;
-import dev.idion.monsterrace.StringConstants;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -22,7 +22,7 @@ public class Input {
         System.out.println(constants);
         printMenus(constants);
         System.out.print(PROMPT);
-        return inputIntegerValue(MENU_NUMBER);
+        return inputPositiveValue(MENU_NUMBER);
     }
 
     private void printMenus(StringConstants constants) {
@@ -38,18 +38,17 @@ public class Input {
         }
     }
 
-    public int inputValue(StringConstants inputType) {
-        System.out.println(inputType + INPUT_MESSAGE.toString());
+    public int inputPositiveValue(StringConstants menuNumber) {
+        System.out.println(menuNumber + INPUT_MESSAGE.toString());
         System.out.print(PROMPT);
-        return inputIntegerValue(inputType);
-    }
-
-    private int inputIntegerValue(StringConstants menuNumber) {
         while (true) {
             try {
                 return getCheckedIntegerValue(scanner.nextLine());
             } catch (NumberFormatException e) {
-                System.out.printf(CORRECT_INPUT_STRING.toString(), menuNumber, e.getMessage(), PROMPT);
+                System.out.printf(CORRECT_INPUT_STRING.toString(),
+                        menuNumber,
+                        e.getMessage(),
+                        PROMPT);
             }
         }
     }

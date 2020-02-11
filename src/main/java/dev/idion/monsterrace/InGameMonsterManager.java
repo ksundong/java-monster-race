@@ -24,11 +24,11 @@ public class InGameMonsterManager {
     }
 
     public void inputAttemptCount() {
-        attemptCount = input.inputValue(ATTEMPT_COUNT_STRING);
+        attemptCount = input.inputPositiveValue(ATTEMPT_COUNT_STRING);
     }
 
     public void initializeMonsters() {
-        monsters = new Monster[input.inputValue(MONSTER_COUNT_STRING)];
+        monsters = new Monster[input.inputPositiveValue(MONSTER_COUNT_STRING)];
         inputMonstersInfo();
     }
 
