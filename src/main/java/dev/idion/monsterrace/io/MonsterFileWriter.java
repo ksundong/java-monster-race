@@ -2,26 +2,30 @@ package dev.idion.monsterrace.io;
 
 import dev.idion.monsterrace.monster.Monster;
 
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Map;
 
-public class MonsterFileWriter {
-    private FileWriter fileWriter;
+import static dev.idion.monsterrace.StringConstants.STORE_FILE_NAME;
 
-    public MonsterFileWriter() {
-        try {
-            this.fileWriter = new FileWriter("monster.txt", true);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+public class MonsterFileWriter {
+    private PrintWriter fileWriter;
+
+    public MonsterFileWriter() throws IOException {
+        this.fileWriter = new PrintWriter(new BufferedWriter(new FileWriter(STORE_FILE_NAME.toString(),
+                false)));
     }
 
     public void commit(Map<String, Monster> monsterMap) {
-        // TODO: Write File Logic.
+        monsterMap.keySet()
+                  .stream()
+                  .map(monsterMap::get)
+                  .forEach(monster -> fileWriter.println(monster.toCsvString()));
     }
 
-    public void close() throws IOException {
+    public void close() {
         fileWriter.close();
     }
 }

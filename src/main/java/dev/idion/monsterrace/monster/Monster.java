@@ -25,6 +25,10 @@ public class Monster implements Movable {
         return monsterName;
     }
 
+    public String toCsvString() {
+        return String.format("%s,%s", monsterName, monsterType);
+    }
+
     @Override
     public String toString() {
         return String.format("%s [%s]", monsterName, monsterType);

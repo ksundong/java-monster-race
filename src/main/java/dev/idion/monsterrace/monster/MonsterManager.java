@@ -15,11 +15,11 @@ public class MonsterManager {
     private final MonsterFileWriter monsterFileWriter;
     private final Map<String, Monster> monsterMap;
 
-    public MonsterManager(Input input) {
+    public MonsterManager(Input input) throws IOException {
         this.input = input;
         this.monsterFileReader = new MonsterFileReader();
-        this.monsterFileWriter = new MonsterFileWriter();
         this.monsterMap = monsterFileReader.makeMonsterMap();
+        this.monsterFileWriter = new MonsterFileWriter();
         waitInputMenuNumber();
     }
 
@@ -27,8 +27,8 @@ public class MonsterManager {
         boolean loopCondition = true;
         while (loopCondition) {
             loopCondition = selectMonsterMenu();
-            monsterFileWriter.commit(monsterMap);
         }
+        this.close();
     }
 
     private boolean selectMonsterMenu() {
@@ -46,7 +46,6 @@ public class MonsterManager {
                 deleteMonsterInfo();
                 return true;
             case 5:
-                close();
                 return false;
             default:
                 System.out.println(THE_NUMBER_IS_NOT_VALID);
@@ -104,6 +103,7 @@ public class MonsterManager {
 
     private void close() {
         try {
+            monsterFileWriter.commit(monsterMap);
             monsterFileReader.close();
             monsterFileWriter.close();
         } catch (IOException e) {

@@ -4,6 +4,8 @@ import dev.idion.monsterrace.io.Input;
 import dev.idion.monsterrace.io.Printer;
 import dev.idion.monsterrace.monster.MonsterManager;
 
+import java.io.IOException;
+
 import static dev.idion.monsterrace.StringConstants.GAME_EXIT_MESSAGE;
 import static dev.idion.monsterrace.StringConstants.GAME_NAME;
 import static dev.idion.monsterrace.StringConstants.PLEASE_SELECT_MENUS_MAIN;
@@ -25,14 +27,18 @@ public class Game {
     public static void main(String[] args) {
         Game game = new Game();
         while (true) {
-            game.selectMenu();
+            try {
+                game.selectMenu();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    private void selectMenu() {
+    private void selectMenu() throws IOException {
         switch (input.selectMenu(PLEASE_SELECT_MENUS_MAIN)) {
             case 1:
-                new MonsterManager(input, printer);
+                new MonsterManager(input);
                 break;
             case 2:
                 readyGame();

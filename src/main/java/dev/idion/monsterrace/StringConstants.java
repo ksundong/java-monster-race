@@ -7,6 +7,7 @@ import java.util.Arrays;
 
 public enum StringConstants {
     PROMPT("> "),
+    STORE_FILE_NAME("monster.txt"),
     GAME_NAME("<심심한 몬스터 경주>"),
     PLEASE_SELECT_MENUS_MAIN("원하는 메뉴를 선택해주세요. " + showMenuRange(MainMenu.values())),
     PLEASE_SELECT_MENUS_MONSTER("원하는 메뉴를 선택해주세요. " + showMenuRange(MonsterManagerMenu.values())),
