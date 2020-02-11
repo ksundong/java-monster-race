@@ -30,12 +30,11 @@ public enum MonsterType {
     }
 
     public static MonsterType valueOfKoreanType(String inputMessage) {
-        return Arrays
-                .stream(MonsterType.values())
-                .filter(monsterType -> inputMessage.equals(monsterType.koreanType))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(String.format(TYPE_NOT_EXIST.toString(),
-                        inputMessage)));
+        return Arrays.stream(MonsterType.values())
+                     .filter(monsterType -> inputMessage.equals(monsterType.koreanType))
+                     .findFirst()
+                     .orElseThrow(() -> new IllegalArgumentException(String.format(TYPE_NOT_EXIST.toString(),
+                             inputMessage)));
     }
 
     abstract int moveMonster(Random random);

@@ -46,21 +46,17 @@ public class InGameMonsterManager {
             try {
                 monsters[index] = input.inputMonsterInfo();
                 break;
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            } catch (ArrayIndexOutOfBoundsException e) {
+            } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e) {
                 System.out.println(e.getMessage());
             }
         }
     }
 
     public void moveMonsters() {
-        Arrays
-                .stream(monsters)
-                .forEach(this::attemptMoveMonster);
+        Arrays.stream(monsters).forEach(this::moveMonster);
     }
 
-    private void attemptMoveMonster(Monster monster) {
+    private void moveMonster(Monster monster) {
         for (int i = 0; i < attemptCount; i++) {
             monster.move();
         }
