@@ -13,7 +13,7 @@ public enum StringConstants {
     MENU_NUMBER("메뉴 번호"),
     THE_NUMBER_IS_NOT_VALID("해당 메뉴 번호는 없는 번호입니다. 다시 입력해주세요."),
     INPUT_MESSAGE("를 입력해주세요."),
-    MONSTER_COUNT_STRING("몬스터의 수"),
+    MONSTER_NOT_EXISTS("%s는 존재하지 않는 몬스터입니다."),
     ATTEMPT_COUNT_STRING("시도할 횟수"),
     INPUT_MONSTER_NAME_AND_TYPE("경주할 몬스터의 이름과 타입을 입력해주세요. ','로 구분합니다. ex) 디온, 비행"),
     SHOW_MONSTER_TYPES("몬스터의 타입은 다음과 같습니다. " + Arrays.toString(MonsterType.values())),

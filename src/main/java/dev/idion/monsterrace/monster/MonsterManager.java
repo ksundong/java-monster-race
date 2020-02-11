@@ -8,6 +8,7 @@ import dev.idion.monsterrace.io.Printer;
 import java.io.IOException;
 import java.util.Map;
 
+import static dev.idion.monsterrace.StringConstants.MONSTER_NOT_EXISTS;
 import static dev.idion.monsterrace.StringConstants.PLEASE_SELECT_MENUS_MONSTER;
 import static dev.idion.monsterrace.StringConstants.THE_NUMBER_IS_NOT_VALID;
 
@@ -64,6 +65,11 @@ public class MonsterManager {
     }
 
     private void modifyMonsterInfo() {
+        String monsterName = input.inputMonsterName();
+        if (!checkMonsterExist(monsterName)) return;
+        Monster newMonster = input.inputMonsterInfo();
+        // 확인 절차 있음
+        // 둘 다: remove -> put(new name, Type)
     }
 
     private void addNewMonsterInfo() {
@@ -72,6 +78,17 @@ public class MonsterManager {
     }
 
     private void deleteMonsterInfo() {
+        String monsterName = input.inputMonsterName();
+        if (!checkMonsterExist(monsterName)) return;
+        // remove (확인 절차 있음)
+    }
+
+    private boolean checkMonsterExist(String monsterName) {
+        boolean monsterExist = monsterMap.containsKey(monsterName);
+        if (!monsterExist) {
+            System.out.printf(MONSTER_NOT_EXISTS.toString(), monsterName);
+        }
+        return monsterExist;
     }
 
     private void close() {

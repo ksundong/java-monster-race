@@ -84,6 +84,10 @@ public class Input {
         return new Monster(monsterName, monsterType);
     }
 
+    public String inputMonsterName() {
+        return scanner.nextLine();
+    }
+
     public void close() {
         scanner.close();
     }
