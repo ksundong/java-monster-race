@@ -16,9 +16,9 @@ public class ScoreBoard {
         Arrays.stream(monsters).forEach(monster -> {
             int moveCount = monster.getMoveCount();
             winnerMoveCount = Math.max(winnerMoveCount, moveCount);
-            List<String> winners = rankMap.getOrDefault(moveCount, new ArrayList<>());
-            winners.add(monster.getMonsterName());
-            rankMap.put(moveCount, winners);
+            List<String> sameDistanceMonsters = rankMap.getOrDefault(moveCount, new ArrayList<>());
+            sameDistanceMonsters.add(monster.getMonsterName());
+            rankMap.put(moveCount, sameDistanceMonsters);
         });
     }
 
