@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static dev.idion.monsterrace.StringConstants.STORE_FILE_NAME;
+import static dev.idion.monsterrace.StringConstants.THERE_IS_NO_MONSTER;
 
 public class MonsterFileReader {
     private BufferedReader fileReader;
@@ -41,7 +42,9 @@ public class MonsterFileReader {
 
     public Monster[] getMonstersFromFile() {
         Map<String, Monster> monsterMap = makeMonsterMap();
-        Monster[] monsters = new Monster[monsterMap.size()];
+        int size = monsterMap.size();
+        if (size == 0) throw new IllegalStateException(THERE_IS_NO_MONSTER.toString());
+        Monster[] monsters = new Monster[size];
         int i = 0;
         for (String key : monsterMap.keySet()) {
             monsters[i] = monsterMap.get(key);

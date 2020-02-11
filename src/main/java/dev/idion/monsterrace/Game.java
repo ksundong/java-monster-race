@@ -31,6 +31,8 @@ public class Game {
                 game.selectMenu();
             } catch (IOException e) {
                 e.printStackTrace();
+            } catch (IllegalStateException e) {
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -52,8 +54,8 @@ public class Game {
 
     private void startGame() {
         System.out.println(GAME_NAME);
-        inGameMonsterManager.inputAttemptCount();
         inGameMonsterManager.setMonstersFromFile();
+        inGameMonsterManager.inputAttemptCount();
         inGameMonsterManager.moveMonsters();
         scoreBoard.rankMonsters(inGameMonsterManager.getMonsters());
     }
