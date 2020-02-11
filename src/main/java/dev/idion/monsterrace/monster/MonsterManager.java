@@ -3,25 +3,20 @@ package dev.idion.monsterrace.monster;
 import dev.idion.monsterrace.io.Input;
 import dev.idion.monsterrace.io.MonsterFileReader;
 import dev.idion.monsterrace.io.MonsterFileWriter;
-import dev.idion.monsterrace.io.Printer;
 
 import java.io.IOException;
 import java.util.Map;
 
-import static dev.idion.monsterrace.StringConstants.MONSTER_NOT_EXISTS;
-import static dev.idion.monsterrace.StringConstants.PLEASE_SELECT_MENUS_MONSTER;
-import static dev.idion.monsterrace.StringConstants.THE_NUMBER_IS_NOT_VALID;
+import static dev.idion.monsterrace.StringConstants.*;
 
 public class MonsterManager {
     private final Input input;
-    private final Printer printer;
     private final MonsterFileReader monsterFileReader;
     private final MonsterFileWriter monsterFileWriter;
     private final Map<String, Monster> monsterMap;
 
-    public MonsterManager(Input input, Printer printer) {
+    public MonsterManager(Input input) {
         this.input = input;
-        this.printer = printer;
         this.monsterFileReader = new MonsterFileReader();
         this.monsterFileWriter = new MonsterFileWriter();
         this.monsterMap = monsterFileReader.makeMonsterMap();
@@ -59,36 +54,52 @@ public class MonsterManager {
         }
     }
 
+    private boolean checkMonsterMap() {
+        if (monsterMap.size() == 0) {
+            System.out.println(THERE_IS_NO_MONSTER);
+            return true;
+        }
+        return false;
+    }
 
     private void showAllMonsters() {
+        if (checkMonsterMap()) return;
         monsterMap.keySet().stream().map(monsterMap::get).forEach(System.out::println);
     }
 
     private void modifyMonsterInfo() {
+        if (checkMonsterMap()) return;
         String monsterName = input.inputMonsterName();
-        if (!checkMonsterExist(monsterName)) return;
+        if (checkMonsterNotExist(monsterName)) return;
+        if (input.checkDeleteMonster()) return;
         Monster newMonster = input.inputMonsterInfo();
-        // 확인 절차 있음
-        // 둘 다: remove -> put(new name, Type)
+        monsterMap.remove(monsterName);
+        monsterMap.put(newMonster.getMonsterName(), newMonster);
     }
 
     private void addNewMonsterInfo() {
         Monster monster = input.inputMonsterInfo();
+        if (monsterMap.containsKey(monster.getMonsterName())) {
+            System.out.println(THE_MONSTER_IS_EXIST);
+            return;
+        }
         monsterMap.put(monster.getMonsterName(), monster);
     }
 
     private void deleteMonsterInfo() {
+        if (checkMonsterMap()) return;
         String monsterName = input.inputMonsterName();
-        if (!checkMonsterExist(monsterName)) return;
-        // remove (확인 절차 있음)
+        if (checkMonsterNotExist(monsterName)) return;
+        if (input.checkDeleteMonster()) return;
+        monsterMap.remove(monsterName);
     }
 
-    private boolean checkMonsterExist(String monsterName) {
+    private boolean checkMonsterNotExist(String monsterName) {
         boolean monsterExist = monsterMap.containsKey(monsterName);
         if (!monsterExist) {
             System.out.printf(MONSTER_NOT_EXISTS.toString(), monsterName);
         }
-        return monsterExist;
+        return !monsterExist;
     }
 
     private void close() {

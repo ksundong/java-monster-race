@@ -22,7 +22,6 @@ public class MonsterFileReader {
 
     public Map<String, Monster> makeMonsterMap() {
         Map<String, Monster> monsterMap = new HashMap<>();
-        monsterMap.put("hello", makeMonster());
         return monsterMap;
     }
 

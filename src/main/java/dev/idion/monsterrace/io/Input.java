@@ -85,7 +85,16 @@ public class Input {
     }
 
     public String inputMonsterName() {
+        System.out.println(INPUT_MONSTER_NAME);
+        System.out.print(PROMPT);
         return scanner.nextLine();
+    }
+
+    public boolean checkDeleteMonster() {
+        System.out.println(ARE_YOU_SURE_TO_DELETE);
+        System.out.print(PROMPT);
+        String input = scanner.nextLine().toUpperCase();
+        return !input.equals("Y");
     }
 
     public void close() {
