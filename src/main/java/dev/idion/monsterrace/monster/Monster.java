@@ -1,11 +1,12 @@
 package dev.idion.monsterrace.monster;
 
 import java.util.Random;
+import java.util.StringJoiner;
 
 public class Monster implements Movable {
-    private int moveCount;
     private final String monsterName;
     private final MonsterType monsterType;
+    private int moveCount;
 
     public Monster(String monsterName, MonsterType monsterType) {
         this.monsterName = monsterName;
@@ -27,11 +28,11 @@ public class Monster implements Movable {
 
     @Override
     public String toString() {
-        StringBuilder monsterDistanceBuilder = new StringBuilder();
-        monsterDistanceBuilder.append(monsterName).append(" [").append(monsterType).append("] : ");
+        String prefix = String.format("%s [%s] : ", monsterName, monsterType);
+        StringJoiner monsterDistance = new StringJoiner("", prefix, "");
         for (int i = 0; i < moveCount; i++) {
-            monsterDistanceBuilder.append("-");
+            monsterDistance.add("-");
         }
-        return monsterDistanceBuilder.toString();
+        return monsterDistance.toString();
     }
 }
