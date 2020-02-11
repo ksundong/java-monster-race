@@ -15,7 +15,6 @@ public class Printer {
     }
 
     public void printWinnerMonster(ScoreBoard scoreBoard) {
-        String winnerMonsterName = scoreBoard.buildWinner();
-        System.out.printf(WINNER_MESSAGE.toString(), winnerMonsterName);
+        System.out.printf(WINNER_MESSAGE.toString(), scoreBoard.getWinnerName());
     }
 }

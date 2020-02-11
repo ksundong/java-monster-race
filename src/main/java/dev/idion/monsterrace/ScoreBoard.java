@@ -13,21 +13,17 @@ public class ScoreBoard {
     }
 
     public void rankMonsters(Monster[] monsters) {
-        Arrays.stream(monsters)
-                .forEach(monster -> {
-                    int moveCount = monster.getMoveCount();
-                    winnerMoveCount = Math.max(winnerMoveCount, moveCount);
-                    List<String> winners = rankMap.getOrDefault(moveCount, new ArrayList<>());
-                    winners.add(monster.getMonsterName());
-                    rankMap.put(moveCount, winners);
-                });
+        Arrays.stream(monsters).forEach(monster -> {
+            int moveCount = monster.getMoveCount();
+            winnerMoveCount = Math.max(winnerMoveCount, moveCount);
+            List<String> winners = rankMap.getOrDefault(moveCount, new ArrayList<>());
+            winners.add(monster.getMonsterName());
+            rankMap.put(moveCount, winners);
+        });
     }
 
-    public String buildWinner() {
-        StringBuilder winnerBuilder = new StringBuilder();
+    public String getWinnerName() {
         List<String> winners = rankMap.get(winnerMoveCount);
-        winners.forEach(winner -> winnerBuilder.append(winner).append(", "));
-        winnerBuilder.delete(winnerBuilder.lastIndexOf(","), winnerBuilder.length());
-        return winnerBuilder.toString();
+        return String.join(", ", winners);
     }
 }
