@@ -21,6 +21,10 @@ public class MonsterManager {
         this.printer = printer;
         this.monsterFileReader = new MonsterFileReader();
         this.monsterFileWriter = new MonsterFileWriter();
+        waitInputMenuNumber();
+    }
+
+    private void waitInputMenuNumber() {
         boolean loopCondition = true;
         while (loopCondition) {
             loopCondition = selectMonsterMenu();
