@@ -41,7 +41,6 @@ public class Game {
                 new MonsterManager(input);
                 break;
             case 2:
-                readyGame();
                 startGame();
                 printGameResult();
                 terminateGame();
@@ -51,12 +50,10 @@ public class Game {
         }
     }
 
-    private void readyGame() {
+    private void startGame() {
         System.out.println(GAME_NAME);
         inGameMonsterManager.inputAttemptCount();
-    }
-
-    private void startGame() {
+        inGameMonsterManager.setMonstersFromFile();
         inGameMonsterManager.moveMonsters();
         scoreBoard.rankMonsters(inGameMonsterManager.getMonsters());
     }

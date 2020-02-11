@@ -1,14 +1,17 @@
 package dev.idion.monsterrace;
 
 import dev.idion.monsterrace.io.Input;
+import dev.idion.monsterrace.io.MonsterFileReader;
 import dev.idion.monsterrace.monster.Monster;
 
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 
 import static dev.idion.monsterrace.StringConstants.ATTEMPT_COUNT_STRING;
 
 public class InGameMonsterManager {
     private int attemptCount;
+    private MonsterFileReader monsterFileReader;
     private Monster[] monsters;
     private Input input;
 
@@ -31,6 +34,15 @@ public class InGameMonsterManager {
     private void moveMonster(Monster monster) {
         for (int i = 0; i < attemptCount; i++) {
             monster.move();
+        }
+    }
+
+    public void setMonstersFromFile() {
+        try {
+            monsterFileReader = new MonsterFileReader();
+            this.monsters = monsterFileReader.getMonstersFromFile();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }

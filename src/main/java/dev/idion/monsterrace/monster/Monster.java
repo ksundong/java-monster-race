@@ -1,6 +1,7 @@
 package dev.idion.monsterrace.monster;
 
 import java.util.Random;
+import java.util.StringJoiner;
 
 public class Monster implements Movable {
     private final String monsterName;
@@ -27,6 +28,15 @@ public class Monster implements Movable {
 
     public String toCsvString() {
         return String.format("%s,%s", monsterName, monsterType);
+    }
+
+    public String getMovingDistance() {
+        String prefix = String.format("%s [%s] : ", monsterName, monsterType);
+        StringJoiner monsterDistance = new StringJoiner("", prefix, "");
+        for (int i = 0; i < moveCount; i++) {
+            monsterDistance.add("-");
+        }
+        return monsterDistance.toString();
     }
 
     @Override

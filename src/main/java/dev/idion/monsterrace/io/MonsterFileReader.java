@@ -39,6 +39,17 @@ public class MonsterFileReader {
         return new Monster(data[0], MonsterType.valueOfKoreanType(data[1]));
     }
 
+    public Monster[] getMonstersFromFile() {
+        Map<String, Monster> monsterMap = makeMonsterMap();
+        Monster[] monsters = new Monster[monsterMap.size()];
+        int i = 0;
+        for (String key : monsterMap.keySet()) {
+            monsters[i] = monsterMap.get(key);
+            i++;
+        }
+        return monsters;
+    }
+
     public void close() throws IOException {
         fileReader.close();
     }
