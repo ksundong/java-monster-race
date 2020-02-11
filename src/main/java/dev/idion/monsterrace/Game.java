@@ -47,7 +47,6 @@ public class Game {
 
     private void readyGame() {
         System.out.println(GAME_NAME);
-        inGameMonsterManager.initializeMonsters();
         inGameMonsterManager.inputAttemptCount();
     }
 

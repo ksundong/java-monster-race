@@ -67,6 +67,8 @@ public class MonsterManager {
     }
 
     private void addNewMonsterInfo() {
+        Monster monster = input.inputMonsterInfo();
+        monsterMap.put(monster.getMonsterName(), monster);
     }
 
     private void deleteMonsterInfo() {

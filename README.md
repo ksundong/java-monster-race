@@ -118,3 +118,4 @@
 15. 보다 명확한 의미를 주기 위하여 rank를 매길 때 사용하는 list의 변수명을 변경해주었습니다. winners -> sameDistanceMonsters
 16. 몬스터 관리 메뉴에 메소드를 추가하였습니다. 대강의 구현을 예상해보고 하드코딩을 하였습니다. (테스트 코드가 필요한 이유!)
 17. 불필요한 메소드를 제거하고 정확한 이름으로 수정하였습니다. inputValue => inputPositiveValue
+18. inputMonsterInfo의 반복되는 부분을 input 클래스 내부에서 수행하도록 수정하였습니다.

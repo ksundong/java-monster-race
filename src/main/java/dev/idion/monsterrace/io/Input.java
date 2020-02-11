@@ -62,7 +62,19 @@ public class Input {
     }
 
     public Monster inputMonsterInfo() {
-        System.out.print(PROMPT);
+        while (true) {
+            try {
+                System.out.println(INPUT_MONSTER_NAME_AND_TYPE);
+                System.out.println(SHOW_MONSTER_TYPES);
+                System.out.print(PROMPT);
+                return getMonsterFromInput();
+            } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private Monster getMonsterFromInput() {
         String[] inputs = scanner.nextLine().split(",");
         if (inputs.length < 2) {
             throw new ArrayIndexOutOfBoundsException(INPUT_CORRECT_MONSTER_NAME_AND_TYPE.toString());
