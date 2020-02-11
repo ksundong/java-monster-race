@@ -33,8 +33,6 @@ public class Input {
             case PLEASE_SELECT_MENUS_MONSTER:
                 Arrays.stream(MonsterManagerMenu.values()).forEach(System.out::println);
                 break;
-            default:
-                // TODO: default에서 무엇을 해주어야 할까?
         }
     }
 
