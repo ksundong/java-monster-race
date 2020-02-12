@@ -6,6 +6,7 @@ import dev.idion.monsterrace.monster.Monster;
 
 import java.io.FileNotFoundException;
 import java.util.Arrays;
+import java.util.Random;
 
 import static dev.idion.monsterrace.StringConstants.ATTEMPT_COUNT_STRING;
 
@@ -32,7 +33,7 @@ public class InGameMonsterManager {
 
     private void moveMonster(Monster monster) {
         for (int i = 0; i < attemptCount; i++) {
-            monster.move();
+            monster.move(new Random());
         }
     }
 

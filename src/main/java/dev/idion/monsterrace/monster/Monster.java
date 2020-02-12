@@ -14,8 +14,8 @@ public class Monster implements Movable {
     }
 
     @Override
-    public void move() {
-        moveCount += monsterType.moveMonster(new Random());
+    public void move(Random random) {
+        moveCount += monsterType.moveMonster(random);
     }
 
     public int getMoveCount() {
