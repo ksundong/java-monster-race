@@ -1,11 +1,11 @@
-package dev.idion.monsterrace.io;
+package dev.idion.monsterrace.util.io;
 
 import dev.idion.monsterrace.MainMenu;
 import dev.idion.monsterrace.StringConstants;
-import dev.idion.monsterrace.datastructure.PositiveInteger;
 import dev.idion.monsterrace.monster.Monster;
 import dev.idion.monsterrace.monster.MonsterManagerMenu;
 import dev.idion.monsterrace.monster.MonsterType;
+import dev.idion.monsterrace.util.datastructure.PositiveInteger;
 
 import java.util.Arrays;
 import java.util.Scanner;

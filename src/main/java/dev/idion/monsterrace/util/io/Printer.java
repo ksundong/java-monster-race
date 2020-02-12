@@ -1,4 +1,4 @@
-package dev.idion.monsterrace.io;
+package dev.idion.monsterrace.util.io;
 
 import dev.idion.monsterrace.ScoreBoard;
 import dev.idion.monsterrace.monster.Monster;

@@ -1,8 +1,8 @@
 package dev.idion.monsterrace.monster;
 
-import dev.idion.monsterrace.io.Input;
-import dev.idion.monsterrace.io.MonsterFileReader;
-import dev.idion.monsterrace.io.MonsterFileWriter;
+import dev.idion.monsterrace.util.io.Input;
+import dev.idion.monsterrace.util.io.MonsterFileReader;
+import dev.idion.monsterrace.util.io.MonsterFileWriter;
 
 import java.io.IOException;
 import java.util.Map;

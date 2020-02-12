@@ -1,4 +1,4 @@
-package dev.idion.monsterrace.datastructure;
+package dev.idion.monsterrace.util.datastructure;
 
 import static dev.idion.monsterrace.StringConstants.THE_NUMBER_MUST_BE_POSITIVE_VALUE;
 

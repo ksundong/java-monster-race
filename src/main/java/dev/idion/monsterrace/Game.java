@@ -1,8 +1,8 @@
 package dev.idion.monsterrace;
 
-import dev.idion.monsterrace.io.Input;
-import dev.idion.monsterrace.io.Printer;
 import dev.idion.monsterrace.monster.MonsterManager;
+import dev.idion.monsterrace.util.io.Input;
+import dev.idion.monsterrace.util.io.Printer;
 
 import java.io.IOException;
 

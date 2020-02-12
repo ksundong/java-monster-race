@@ -1,8 +1,8 @@
 package dev.idion.monsterrace;
 
-import dev.idion.monsterrace.io.Input;
-import dev.idion.monsterrace.io.MonsterFileReader;
 import dev.idion.monsterrace.monster.Monster;
+import dev.idion.monsterrace.util.io.Input;
+import dev.idion.monsterrace.util.io.MonsterFileReader;
 
 import java.io.FileNotFoundException;
 import java.util.Arrays;
