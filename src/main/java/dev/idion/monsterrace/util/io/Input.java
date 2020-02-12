@@ -82,7 +82,7 @@ public class Input {
     }
 
     public boolean checkDeleteMonster() {
-        System.out.println(ARE_YOU_SURE_TO_DELETE);
+        System.out.println(ARE_YOU_SURE_TO_MODIFY_OR_DELETE);
         System.out.print(PROMPT);
         String input = scanner.nextLine().toUpperCase();
         return !input.equals("Y");

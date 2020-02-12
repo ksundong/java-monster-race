@@ -22,7 +22,7 @@ public enum StringConstants {
     CORRECT_INPUT_STRING("%s를 정확히 입력해주세요. 에러메시지: %s%n%s"),
     THE_NUMBER_MUST_BE_POSITIVE_VALUE("숫자는 양수여야 합니다."),
     INPUT_CORRECT_MONSTER_NAME_AND_TYPE("이름과 타입은 ','로 구분되어야 합니다."),
-    ARE_YOU_SURE_TO_DELETE("정말로 해당 몬스터를 삭제하시겠습니까? (Y/N)"),
+    ARE_YOU_SURE_TO_MODIFY_OR_DELETE("정말로 해당 몬스터를 수정/삭제하시겠습니까? (Y/N)"),
     TYPE_NOT_EXIST("%s은(는) 타입에 맞지않습니다."),
     THERE_IS_NO_MONSTER("등록된 몬스터가 없습니다! 몬스터를 추가해주세요."),
     THE_MONSTER_IS_EXIST("이미 존재하는 몬스터입니다. 수정/삭제를 통해 변경해주세요."),
