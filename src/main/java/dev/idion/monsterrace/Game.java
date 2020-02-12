@@ -47,6 +47,9 @@ public class Game {
                 printGameResult();
                 terminateGame();
                 break;
+            case 3:
+                terminateGame();
+                break;
             default:
                 System.out.println(THE_NUMBER_IS_NOT_VALID);
         }
