@@ -26,32 +26,33 @@ public class Game {
 
     public static void main(String[] args) {
         Game game = new Game();
-        while (true) {
+        boolean loopCondition = true;
+        while (loopCondition) {
             try {
-                game.selectMenu();
+                loopCondition = game.selectMenu();
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (IllegalStateException e) {
                 System.out.println(e.getMessage());
             }
         }
+        game.terminateGame();
     }
 
-    private void selectMenu() throws IOException {
+    private boolean selectMenu() throws IOException {
         switch (input.selectMenu(PLEASE_SELECT_MENUS_MAIN).getPositiveInt()) {
             case 1:
                 new MonsterManager(input);
-                break;
+                return true;
             case 2:
                 startGame();
                 printGameResult();
-                terminateGame();
-                break;
+                return true;
             case 3:
-                terminateGame();
-                break;
+                return false;
             default:
                 System.out.println(THE_NUMBER_IS_NOT_VALID);
+                return true;
         }
     }
 
