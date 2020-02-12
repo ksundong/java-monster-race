@@ -59,20 +59,25 @@ public class Input {
                 System.out.println(SHOW_MONSTER_TYPES);
                 System.out.print(PROMPT);
                 return getMonsterFromInput();
-            } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException e) {
+            } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
     }
 
-    private Monster getMonsterFromInput() {
-        String[] inputs = scanner.nextLine().split(",");
-        if (inputs.length < 2) {
-            throw new ArrayIndexOutOfBoundsException(INPUT_CORRECT_MONSTER_NAME_AND_TYPE.toString());
-        }
+    public Monster getMonsterFromInput() {
+        String[] inputs = inputNameAndType();
         String monsterName = inputs[0].trim();
         MonsterType monsterType = MonsterType.valueOfKoreanType(inputs[1].trim());
         return new Monster(monsterName, monsterType);
+    }
+
+    private String[] inputNameAndType() {
+        String[] inputs = scanner.nextLine().split(",");
+        if (inputs.length < 2) {
+            throw new IllegalArgumentException(INPUT_CORRECT_MONSTER_NAME_AND_TYPE.toString());
+        }
+        return inputs;
     }
 
     public String inputMonsterName() {
