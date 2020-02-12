@@ -5,6 +5,8 @@ import dev.idion.monsterrace.util.io.MonsterFileReader;
 import dev.idion.monsterrace.util.io.MonsterFileWriter;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import static dev.idion.monsterrace.StringConstants.*;
@@ -53,7 +55,7 @@ public class MonsterManager {
         }
     }
 
-    private boolean checkMonsterMap() {
+    public boolean checkMonsterMap() {
         if (monsterMap.size() == 0) {
             System.out.println(THERE_IS_NO_MONSTER);
             return true;
@@ -63,7 +65,11 @@ public class MonsterManager {
 
     private void showAllMonsters() {
         if (checkMonsterMap()) return;
-        monsterMap.keySet().stream().map(monsterMap::get).forEach(System.out::println);
+        getMonsters().forEach(System.out::println);
+    }
+
+    public List<Monster> getMonsters() {
+        return new ArrayList<>(monsterMap.values());
     }
 
     private void modifyMonsterInfo() {
