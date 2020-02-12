@@ -11,7 +11,6 @@ import static dev.idion.monsterrace.StringConstants.ATTEMPT_COUNT_STRING;
 
 public class InGameMonsterManager {
     private int attemptCount;
-    private MonsterFileReader monsterFileReader;
     private Monster[] monsters;
     private Input input;
 
@@ -39,8 +38,7 @@ public class InGameMonsterManager {
 
     public void setMonstersFromFile() {
         try {
-            monsterFileReader = new MonsterFileReader();
-            this.monsters = monsterFileReader.getMonstersFromFile();
+            this.monsters = new MonsterFileReader().getMonstersFromFile();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
