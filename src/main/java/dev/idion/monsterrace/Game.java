@@ -45,8 +45,7 @@ public class Game {
                 new MonsterManager(input);
                 return true;
             case 2:
-                startGame();
-                printGameResult();
+                playGame();
                 return true;
             case 3:
                 return false;
@@ -54,6 +53,11 @@ public class Game {
                 System.out.println(THE_NUMBER_IS_NOT_VALID);
                 return true;
         }
+    }
+
+    private void playGame() {
+        startGame();
+        printGameResult();
     }
 
     private void startGame() {
