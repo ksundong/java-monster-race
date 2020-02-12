@@ -38,7 +38,7 @@ public class Game {
     }
 
     private void selectMenu() throws IOException {
-        switch (input.selectMenu(PLEASE_SELECT_MENUS_MAIN)) {
+        switch (input.selectMenu(PLEASE_SELECT_MENUS_MAIN).getPositiveInt()) {
             case 1:
                 new MonsterManager(input);
                 break;

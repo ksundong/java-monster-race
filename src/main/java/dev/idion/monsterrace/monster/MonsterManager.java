@@ -32,7 +32,7 @@ public class MonsterManager {
     }
 
     private boolean selectMonsterMenu() {
-        switch (input.selectMenu(PLEASE_SELECT_MENUS_MONSTER)) {
+        switch (input.selectMenu(PLEASE_SELECT_MENUS_MONSTER).getPositiveInt()) {
             case 1:
                 showAllMonsters();
                 return true;

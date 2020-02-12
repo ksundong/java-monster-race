@@ -24,7 +24,7 @@ public class InGameMonsterManager {
     }
 
     public void inputAttemptCount() {
-        attemptCount = input.inputPositiveValue(ATTEMPT_COUNT_STRING);
+        attemptCount = input.inputPositiveValue(ATTEMPT_COUNT_STRING).getPositiveInt();
     }
 
     public void moveMonsters() {

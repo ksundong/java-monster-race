@@ -2,6 +2,7 @@ package dev.idion.monsterrace.io;
 
 import dev.idion.monsterrace.MainMenu;
 import dev.idion.monsterrace.StringConstants;
+import dev.idion.monsterrace.datastructure.PositiveInteger;
 import dev.idion.monsterrace.monster.Monster;
 import dev.idion.monsterrace.monster.MonsterManagerMenu;
 import dev.idion.monsterrace.monster.MonsterType;
@@ -18,7 +19,7 @@ public class Input {
         this.scanner = new Scanner(System.in);
     }
 
-    public int selectMenu(StringConstants constants) {
+    public PositiveInteger selectMenu(StringConstants constants) {
         System.out.println(constants);
         printMenus(constants);
         System.out.print(PROMPT);
@@ -36,12 +37,12 @@ public class Input {
         }
     }
 
-    public int inputPositiveValue(StringConstants menuNumber) {
+    public PositiveInteger inputPositiveValue(StringConstants menuNumber) {
         System.out.println(menuNumber + INPUT_MESSAGE.toString());
         System.out.print(PROMPT);
         while (true) {
             try {
-                return getCheckedIntegerValue(scanner.nextLine());
+                return new PositiveInteger(scanner.nextLine());
             } catch (NumberFormatException e) {
                 System.out.printf(CORRECT_INPUT_STRING.toString(),
                         menuNumber,
@@ -49,14 +50,6 @@ public class Input {
                         PROMPT);
             }
         }
-    }
-
-    private int getCheckedIntegerValue(String input) {
-        int integer = Integer.parseInt(input);
-        if (integer < 1) {
-            throw new NumberFormatException(THE_NUMBER_MUST_BE_POSITIVE_VALUE.toString());
-        }
-        return integer;
     }
 
     public Monster inputMonsterInfo() {
