@@ -2,7 +2,10 @@ package dev.idion.monsterrace;
 
 import dev.idion.monsterrace.monster.Monster;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ScoreBoard {
     private final Map<Integer, List<String>> rankMap;
@@ -12,14 +15,14 @@ public class ScoreBoard {
         this.rankMap = new HashMap<>();
     }
 
-    public void rankMonsters(Monster[] monsters) {
-        Arrays.stream(monsters).forEach(monster -> {
+    public void rankMonsters(List<Monster> monsters) {
+        for (Monster monster : monsters) {
             int moveCount = monster.getMoveCount();
             winnerMoveCount = Math.max(winnerMoveCount, moveCount);
             List<String> sameDistanceMonsters = rankMap.getOrDefault(moveCount, new ArrayList<>());
             sameDistanceMonsters.add(monster.getMonsterName());
             rankMap.put(moveCount, sameDistanceMonsters);
-        });
+        }
     }
 
     public String getWinnerName() {

@@ -7,7 +7,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static dev.idion.monsterrace.StringConstants.STORE_FILE_NAME;
@@ -23,34 +25,27 @@ public class MonsterFileReader {
     public Map<String, Monster> makeMonsterMap() {
         Map<String, Monster> monsterMap = new HashMap<>();
         while (true) {
-            try {
-                Monster monster = makeMonster();
-                monsterMap.put(monster.getMonsterName(), monster);
-            } catch (IOException e) {
-                break;
-            }
+            Monster monster = makeMonster();
+            if (monster == null) break;
+            monsterMap.put(monster.getMonsterName(), monster);
         }
         return monsterMap;
     }
 
-    public Monster makeMonster() throws IOException {
-        String line = fileReader.readLine();
-        if (line == null) throw new IOException("Empty Line");
-        String[] data = line.split(",");
-        return new Monster(data[0], MonsterType.valueOfKoreanType(data[1]));
+    public Monster makeMonster() {
+        try {
+            String line = fileReader.readLine();
+            String[] data = line.split(",");
+            return new Monster(data[0], MonsterType.valueOfKoreanType(data[1]));
+        } catch (IOException | NullPointerException e) {
+            return null;
+        }
     }
 
-    public Monster[] getMonstersFromFile() {
+    public List<Monster> getMonstersFromFile() {
         Map<String, Monster> monsterMap = makeMonsterMap();
-        int size = monsterMap.size();
-        if (size == 0) throw new IllegalStateException(THERE_IS_NO_MONSTER.toString());
-        Monster[] monsters = new Monster[size];
-        int i = 0;
-        for (String key : monsterMap.keySet()) {
-            monsters[i] = monsterMap.get(key);
-            i++;
-        }
-        return monsters;
+        if (monsterMap.size() == 0) throw new IllegalStateException(THERE_IS_NO_MONSTER.toString());
+        return new ArrayList<>(monsterMap.values());
     }
 
     public void close() throws IOException {

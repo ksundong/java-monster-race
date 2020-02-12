@@ -5,21 +5,21 @@ import dev.idion.monsterrace.util.io.Input;
 import dev.idion.monsterrace.util.io.MonsterFileReader;
 
 import java.io.FileNotFoundException;
-import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 import static dev.idion.monsterrace.StringConstants.ATTEMPT_COUNT_STRING;
 
 public class InGameMonsterManager {
     private int attemptCount;
-    private Monster[] monsters;
+    private List<Monster> monsters;
     private Input input;
 
     public InGameMonsterManager(Input input) {
         this.input = input;
     }
 
-    public Monster[] getMonsters() {
+    public List<Monster> getMonsters() {
         return monsters;
     }
 
@@ -28,7 +28,7 @@ public class InGameMonsterManager {
     }
 
     public void moveMonsters() {
-        Arrays.stream(monsters).forEach(this::moveMonster);
+        monsters.forEach(this::moveMonster);
     }
 
     private void moveMonster(Monster monster) {
