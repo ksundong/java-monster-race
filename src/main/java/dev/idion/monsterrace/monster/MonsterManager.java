@@ -20,7 +20,7 @@ public class MonsterManager {
         waitInputMenuNumber();
     }
 
-    private boolean preCheck() {
+    private boolean preDeleteCheck() {
         if (monsterCage.isEmpty()) return true;
         String monsterName = input.inputMonsterName();
         if (!monsterCage.containsMonster(monsterName)) return true;
@@ -62,7 +62,7 @@ public class MonsterManager {
     }
 
     private boolean modifyMonsterInfo() {
-        if (preCheck()) return true;
+        if (preDeleteCheck()) return true;
         Monster newMonster = input.inputMonsterInfo();
         monsterCage.put(newMonster.getMonsterName(), newMonster);
         return true;
@@ -78,7 +78,7 @@ public class MonsterManager {
     }
 
     private boolean deleteMonsterInfo() {
-        preCheck();
+        preDeleteCheck();
         return true;
     }
 
