@@ -15,7 +15,7 @@ public class ScoreBoard {
         this.rankMap = new HashMap<>();
     }
 
-    public void rankMonsters(List<Monster> monsters) {
+    public Map<Integer, List<String>> rankMonsters(List<Monster> monsters) {
         for (Monster monster : monsters) {
             int moveCount = monster.getMoveCount();
             winnerMoveCount = Math.max(winnerMoveCount, moveCount);
@@ -23,6 +23,7 @@ public class ScoreBoard {
             sameDistanceMonsters.add(monster.getMonsterName());
             rankMap.put(moveCount, sameDistanceMonsters);
         }
+        return rankMap;
     }
 
     public String getWinnerName() {
