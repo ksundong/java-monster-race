@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
 
 class ScoreBoardTest {
     ScoreBoard scoreBoard;
@@ -64,6 +63,10 @@ class ScoreBoardTest {
 
     @Test
     void testGetWinnerName() {
-        fail("실패");
+        scoreBoard.rankMonsters(monsters);
+
+        String expected = "구구, 고라파덕";
+        String actual = scoreBoard.getWinnerName();
+        assertThat(actual).isEqualTo(expected);
     }
 }

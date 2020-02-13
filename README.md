@@ -127,3 +127,4 @@
 24. util성 클래스들을 util package로 이동시켰습니다.
 25. 메인 메뉴에 종료 기능을 추가하였습니다.
 26. MonsterManager의 Monster Map을 Wrapping하는 MonsterCage라는 클래스를 만들어 리팩토링하였습니다.
+27. ScoreBoard 클래스의 테스트를 추가하였습니다.
