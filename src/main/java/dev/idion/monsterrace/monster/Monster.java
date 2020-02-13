@@ -22,11 +22,6 @@ public class Monster implements Movable {
         return moveCount;
     }
 
-    // FIXME: 테스트를 수행하기위해 생성한 메소드인데 제거하고싶음.
-    public void setMoveCount(int moveCount) {
-        this.moveCount = moveCount;
-    }
-
     public String getMonsterName() {
         return monsterName;
     }

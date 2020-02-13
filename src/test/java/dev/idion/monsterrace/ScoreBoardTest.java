@@ -5,10 +5,7 @@ import dev.idion.monsterrace.monster.MonsterType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,6 +16,18 @@ class ScoreBoardTest {
     Monster gugu;
     Monster gorapaduck;
     Monster kkorat;
+    Random runRandom = new Random() {
+        @Override
+        public int nextInt(int bound) {
+            return 4;
+        }
+    };
+    Random flyRandom = new Random() {
+        @Override
+        public int nextInt(int bound) {
+            return 7;
+        }
+    };
 
     @BeforeEach
     void setUp() {
@@ -29,10 +38,29 @@ class ScoreBoardTest {
         gorapaduck = new Monster("고라파덕", MonsterType.valueOfKoreanType("에스퍼"));
         kkorat = new Monster("꼬렛", MonsterType.valueOfKoreanType("달리기"));
 
-        dion.setMoveCount(5);
-        gugu.setMoveCount(9);
-        gorapaduck.setMoveCount(9);
-        kkorat.setMoveCount(8);
+        Random espurrRandom = new Random() {
+            private boolean first = true;
+
+            @Override
+            public int nextInt(int bound) {
+                if (first) {
+                    first = false;
+                    return 9;
+                }
+                return 8;
+            }
+        };
+
+        for (int i = 0; i < 5; i++) {
+            dion.move(runRandom);
+        }
+        for (int i = 0; i < 3; i++) {
+            gugu.move(flyRandom);
+        }
+        gorapaduck.move(espurrRandom);
+        for (int i = 0; i < 8; i++) {
+            kkorat.move(runRandom);
+        }
 
         monsters.add(dion);
         monsters.add(gugu);
