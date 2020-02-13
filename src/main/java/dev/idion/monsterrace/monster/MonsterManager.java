@@ -17,19 +17,9 @@ public class MonsterManager {
         this.input = input;
         this.monsterCage = new MonsterCage();
         this.monsterFileWriter = new MonsterFileWriter();
-        waitInputMenuNumber();
     }
 
-    private boolean preDeleteCheck() {
-        if (monsterCage.isEmpty()) return true;
-        String monsterName = input.inputMonsterName();
-        if (!monsterCage.containsMonster(monsterName)) return true;
-        if (input.checkDeleteMonster()) return true;
-        monsterCage.remove(monsterName);
-        return false;
-    }
-
-    private void waitInputMenuNumber() {
+    public void waitInputMenuNumber() {
         boolean loopCondition = true;
         while (loopCondition) {
             loopCondition = selectMonsterMenu();
@@ -55,6 +45,7 @@ public class MonsterManager {
         }
     }
 
+    // TODO: Remove Code Smell
     private boolean showAllMonsters() {
         if (monsterCage.isEmpty()) return true;
         monsterCage.getMonsters().forEach(System.out::println);
@@ -68,6 +59,7 @@ public class MonsterManager {
         return true;
     }
 
+    // TODO: Remove Code Smell
     private boolean addNewMonsterInfo() {
         Monster monster = input.inputMonsterInfo();
         if (monsterCage.containsMonster(monster.getMonsterName(), true)) {
@@ -80,6 +72,15 @@ public class MonsterManager {
     private boolean deleteMonsterInfo() {
         preDeleteCheck();
         return true;
+    }
+
+    private boolean preDeleteCheck() {
+        if (monsterCage.isEmpty()) return true;
+        String monsterName = input.inputMonsterName();
+        if (!monsterCage.containsMonster(monsterName)) return true;
+        if (input.checkDeleteMonster()) return true;
+        monsterCage.remove(monsterName);
+        return false;
     }
 
     private void close() {

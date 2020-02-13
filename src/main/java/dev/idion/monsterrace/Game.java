@@ -42,7 +42,7 @@ public class Game {
     private boolean selectMenu() throws IOException {
         switch (input.selectMenu(PLEASE_SELECT_MENUS_MAIN).getPositiveInt()) {
             case 1:
-                new MonsterManager(input);
+                new MonsterManager(input).waitInputMenuNumber();
                 return true;
             case 2:
                 playGame();
