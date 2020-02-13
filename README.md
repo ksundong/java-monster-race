@@ -129,3 +129,5 @@
 26. MonsterManager의 Monster Map을 Wrapping하는 MonsterCage라는 클래스를 만들어 리팩토링하였습니다.
 27. ScoreBoard 클래스의 테스트를 추가하였습니다.
 28. PositiveInteger 클래스의 테스트를 추가하였습니다.
+29. Monster 클래스의 테스트를 추가하였습니다.
+30. MonsterCage 클래스의 테스트를 추가하였습니다.

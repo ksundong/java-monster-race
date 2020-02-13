@@ -21,6 +21,11 @@ public class MonsterCage {
         this.monsterMap = monsterFileReader.makeMonsterMap();
     }
 
+    public MonsterCage(Map<String, Monster> testMonsterMap) {
+        this.monsterFileReader = null;
+        this.monsterMap = testMonsterMap;
+    }
+
     public boolean isEmpty() {
         if (monsterMap.size() == 0) {
             System.out.println(THERE_IS_NO_MONSTER);
