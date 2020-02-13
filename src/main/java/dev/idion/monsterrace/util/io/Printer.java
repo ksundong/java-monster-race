@@ -11,7 +11,7 @@ import static dev.idion.monsterrace.StringConstants.WINNER_MESSAGE;
 public class Printer {
     public void printMonstersMovingDistance(List<Monster> monsters) {
         System.out.println(RESULT_MESSAGE);
-        monsters.forEach(m -> System.out.println(m.getMovingDistance()));
+        monsters.stream().map(Monster::getMovingDistance).forEach(System.out::println);
     }
 
     public void printWinnerMonster(ScoreBoard scoreBoard) {
