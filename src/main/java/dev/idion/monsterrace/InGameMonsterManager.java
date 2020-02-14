@@ -13,10 +13,12 @@ import static dev.idion.monsterrace.StringConstants.ATTEMPT_COUNT_STRING;
 public class InGameMonsterManager {
     private int attemptCount;
     private List<Monster> monsters;
-    private Input input;
+    private final Input input;
+    private final Random random;
 
     public InGameMonsterManager(Input input) {
         this.input = input;
+        this.random = new Random();
     }
 
     public List<Monster> getMonsters() {
@@ -33,7 +35,7 @@ public class InGameMonsterManager {
 
     private void moveMonster(Monster monster) {
         for (int i = 0; i < attemptCount; i++) {
-            monster.move(new Random());
+            monster.move(random);
         }
     }
 
