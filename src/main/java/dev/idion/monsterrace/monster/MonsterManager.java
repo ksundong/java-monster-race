@@ -58,7 +58,7 @@ public class MonsterManager {
     }
 
     private boolean modifyMonsterInfo() {
-        if (preDeleteCheck()) return true;
+        if (deleteMonsterIfExist()) return true;
         Monster newMonster = input.inputMonsterInfo();
         monsterCage.put(newMonster.getMonsterName(), newMonster);
         return true;
@@ -75,14 +75,20 @@ public class MonsterManager {
     }
 
     private boolean deleteMonsterInfo() {
-        preDeleteCheck();
+        deleteMonsterIfExist();
         return true;
     }
 
-    private boolean preDeleteCheck() {
+    private boolean deleteMonsterIfExist() {
         if (monsterCage.isEmpty()) return true;
+
         String monsterName = input.inputMonsterName();
         if (!monsterCage.containsMonster(monsterName)) return true;
+
+        return deleteMonster(monsterName);
+    }
+
+    private boolean deleteMonster(String monsterName) {
         if (input.checkDeleteMonster()) return true;
         monsterCage.remove(monsterName);
         return false;
