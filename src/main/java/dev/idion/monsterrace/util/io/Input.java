@@ -44,7 +44,7 @@ public class Input {
         while (true) {
             try {
                 return new PositiveInteger(scanner.nextLine());
-            } catch (NumberFormatException e) {
+            } catch (IllegalArgumentException e) {
                 System.out.printf(CORRECT_INPUT_STRING.toString(),
                         menuNumber,
                         e.getMessage(),

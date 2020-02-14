@@ -19,7 +19,7 @@ class PositiveIntegerTest {
         String input = "-1";
         assertThatThrownBy(() -> {
             new PositiveInteger(input);
-        }).isInstanceOf(NumberFormatException.class)
+        }).isInstanceOf(IllegalArgumentException.class)
           .hasMessageContaining(THE_NUMBER_MUST_BE_POSITIVE_VALUE.toString());
     }
 
@@ -28,7 +28,7 @@ class PositiveIntegerTest {
         String input = "0";
         assertThatThrownBy(() -> {
             new PositiveInteger(input);
-        }).isInstanceOf(NumberFormatException.class)
+        }).isInstanceOf(IllegalArgumentException.class)
           .hasMessageContaining(THE_NUMBER_MUST_BE_POSITIVE_VALUE.toString());
     }
 

@@ -8,7 +8,7 @@ public class PositiveInteger {
     public PositiveInteger(String input) {
         int integer = Integer.parseInt(input);
         if (integer < 1) {
-            throw new NumberFormatException(THE_NUMBER_MUST_BE_POSITIVE_VALUE.toString());
+            throw new IllegalArgumentException(THE_NUMBER_MUST_BE_POSITIVE_VALUE.toString());
         }
         this.positiveInt = integer;
     }
