@@ -9,7 +9,6 @@ import java.io.IOException;
 import static dev.idion.monsterrace.StringConstants.GAME_EXIT_MESSAGE;
 import static dev.idion.monsterrace.StringConstants.GAME_NAME;
 import static dev.idion.monsterrace.StringConstants.PLEASE_SELECT_MENUS_MAIN;
-import static dev.idion.monsterrace.StringConstants.THE_NUMBER_IS_NOT_VALID;
 
 public class Game {
     private final InGameMonsterManager inGameMonsterManager;
@@ -42,22 +41,24 @@ public class Game {
     private boolean selectMenu() throws IOException {
         switch (input.selectMenu(PLEASE_SELECT_MENUS_MAIN).getPositiveInt()) {
             case 1:
-                new MonsterManager(input).waitInputMenuNumber();
-                return true;
+                return new MonsterManager(input).waitInputMenuNumber();
             case 2:
-                playGame();
-                return true;
+                return playGame();
             case 3:
-                return false;
+                return exitGameMenu();
             default:
-                System.out.println(THE_NUMBER_IS_NOT_VALID);
-                return true;
+                return printer.printNotValidNumber();
         }
     }
 
-    private void playGame() {
+    private boolean playGame() {
         startGame();
-        printGameResult();
+        printer.printGameResult(inGameMonsterManager, scoreBoard);
+        return true;
+    }
+
+    private boolean exitGameMenu() {
+        return false;
     }
 
     private void startGame() {
@@ -66,11 +67,6 @@ public class Game {
         inGameMonsterManager.inputAttemptCount();
         inGameMonsterManager.moveMonsters();
         scoreBoard.rankMonsters(inGameMonsterManager.getMonsters());
-    }
-
-    private void printGameResult() {
-        printer.printMonstersMovingDistance(inGameMonsterManager.getMonsters());
-        printer.printWinnerMonster(scoreBoard);
     }
 
     private void terminateGame() {

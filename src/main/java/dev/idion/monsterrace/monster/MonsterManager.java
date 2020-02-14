@@ -19,12 +19,13 @@ public class MonsterManager {
         this.monsterFileWriter = new MonsterFileWriter();
     }
 
-    public void waitInputMenuNumber() {
+    public boolean waitInputMenuNumber() {
         boolean loopCondition = true;
         while (loopCondition) {
             loopCondition = selectMonsterMenu();
         }
         this.close();
+        return true;
     }
 
     private boolean selectMonsterMenu() {
@@ -38,11 +39,15 @@ public class MonsterManager {
             case 4:
                 return deleteMonsterInfo();
             case 5:
-                return false;
+                return goToPreviousMenu();
             default:
                 System.out.println(THE_NUMBER_IS_NOT_VALID);
                 return true;
         }
+    }
+
+    private boolean goToPreviousMenu() {
+        return false;
     }
 
     // TODO: Remove Code Smell
