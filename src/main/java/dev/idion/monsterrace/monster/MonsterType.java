@@ -11,12 +11,14 @@ public enum MonsterType {
         public int moveMonster(Random random) {
             return random.nextInt(10) >= 4 ? 1 : 0;
         }
-    }, FLYING("비행") {
+    },
+    FLYING("비행") {
         @Override
         public int moveMonster(Random random) {
             return random.nextInt(10) >= 6 ? 3 : 0;
         }
-    }, ESPURR("에스퍼") {
+    },
+    ESPURR("에스퍼") {
         @Override
         public int moveMonster(Random random) {
             return random.nextInt(10) == 9 ? random.nextInt(99) + 1 : 0;
